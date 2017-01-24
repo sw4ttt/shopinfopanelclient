@@ -1,0 +1,16 @@
+{
+  "name": "nodebeticaorinokia",
+  "version": "1.0.0",
+  "description": "test program for web admin panel for a2 system",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "node-schedule": "^1.2.0",
+    "string": "^3.3.3"
+  }
+}
