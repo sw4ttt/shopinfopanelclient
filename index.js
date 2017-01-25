@@ -4,8 +4,6 @@ var Stringjs = require('string');
 var cron = require('node-schedule');
 var http = require('http');
 var runner = require("child_process");
-
-
 var argsString = "userdata,value2,value3";
 var phpScriptPath = "testdbism.php";
 
@@ -29,7 +27,7 @@ runner.exec("php " + phpScriptPath + " " +argsString, function(err, stdout, stde
           //console.log(JSON.parse(stdout));
           //------------------------------------
           ///api/codigo/:codigo/data/:data
-          http.get("http://shopinfopanel.herokuapp.com/api/codigo/"+"123"+"/data/"+stdout, function(res) 
+          http.get("http://shopinfopanel.herokuapp.com/api/codigo/"+"JtmzAMVx"+"/data/"+stdout, function(res) 
           {
               var body = ''; // Will contain the final response
               // Received data is a buffer.

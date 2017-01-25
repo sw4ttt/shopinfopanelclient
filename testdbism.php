@@ -1,6 +1,6 @@
 <?php
 
-define("DB_PATH", "D:/Web/a2testbd/DATA/");
+define("DB_PATH", "C:/a2JEANSWEST/Empre001/DATA/");
 
 $db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName=".DB_PATH.";","master","....");
 $params = explode(",", $argv[1]);
