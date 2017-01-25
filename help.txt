@@ -1,1 +1,51 @@
 heroku logs --tail
+
+
+var j = cron.scheduleJob('*/1 * * * *', function()
+{
+  console.log('CRON: START');  
+  //----------------------------------------------------------------------------------------------
+  runner.exec("php " + phpScriptPath + " " +argsString, function(err, phpResponse, stderr) 
+  {
+      if(err) 
+      {
+        console.log(err);
+      }
+      if(stdout)
+      {
+          //INFORMACION:
+          //  Para la peticion al servidor "shopinfopanel" mandas "stdout" solo.
+          //  Para lo demas se necesita JSON.parse.
+          //var dataUsableLocal = JSON.parse(stdout);
+          console.log(stdout);
+          //console.log("--------------------------------");
+          //console.log(JSON.stringify(stdout));
+          //console.log("--------------------------------");
+          //console.log(JSON.parse(stdout));
+          //------------------------------------
+          
+          http.get("http://shopinfopanel.herokuapp.com/data/"+stdout, function(res) 
+          {
+              var body = ''; // Will contain the final response
+              // Received data is a buffer.
+              // Adding it to our body
+              res.on('data', function(data){
+                body += data;
+              });
+              // After the response is completed, parse it and log it to the console
+              res.on('end', function() {
+                //var parsed = JSON.parse(body);
+                console.log("SERVER SAID: "+body.toString());
+              });
+          })
+          // If any error has occured, log error to console
+          .on('error', function(e) {
+            console.log("Got error: " + e.message);
+          });
+          
+          //------------------------------------
+      }
+
+    });
+  //----------------------------------------------------------------------------------------------
+});

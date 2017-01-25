@@ -1,48 +1,39 @@
 <?php
 
-define("DB_PATH", "C:/a2JEANSWEST/Empre001/DATA/");
+define("DB_PATH", "D:/Web/a2testbd/DATA/");
 
-function getUsersData() 
-{
-    
-    
+$db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName=".DB_PATH.";","master","....");
+$params = explode(",", $argv[1]);
+
+function getUsersData($db) 
+{  
+    $res = odbc_exec($db,"SELECT Nombre,Descripcion,Clave FROM Susuarios");
+    $arrayOut = array();
+    $index = 0;
+    while($row = odbc_fetch_array($res)) 
+    {
+        $arrayOut[$index]  = $row;
+        $index++;
+    }
+    echo json_encode($arrayOut);
+}
+function getSalesData() 
+{   
 }
 
-$params = explode(",", $argv[1]);
+switch ($params[0]) {
+    case "userdata":
+        getUsersData($db);
+        break;
+    default:
+        fwrite(STDERR, "ERROR PHP file params!.");
+}
+
+
 //echo $params[0] ." - " . $params[1] . " - " . $params[2];
 //$db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName=D:/Web/a2testbd/DATA/;","master","caja1");
-$db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName=".DB_PATH.";","master","caja1");
+//$db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName=".DB_PATH.";","master","....");
+//$res = odbc_exec($db,"SELECT Nombre,Descripcion,Clave FROM Susuarios");
 
-$res = odbc_exec($db,"SELECT * FROM Susuarios");
 //echo odbc_num_rows($res)." Registros!";
 
-$arrayOut = array();
-while($row = odbc_fetch_array($res)) {
-    //ar_dump($row);
-    /*
-    echo ("<>".$row['Nombre']);
-    echo ("<BR>".$row['Descripcion']);
-    echo ("<BR>".$row['Clave']);
-    echo ("<BR>".$row['Status']);
-
-    {"Nombre":"OSCAR"}
-    */
-    /*
-    $dataOut = $dataOut.
-    '"Nombre" : "'.$row['Nombre'].'",
-        "Descripcion" : "'.$row['Descripcion'].'",
-        "Clave" : "'.$row['Clave'].'",
-        "Status" : "'.$row['Status'].'",';  
-        */  
-     $arrayOut["Nombre"]  = $row['Nombre'];
-     $arrayOut["Descripcion"]  = $row['Descripcion'];
-     $arrayOut["Clave"]  = "123";
-     $arrayOut["Status"]  = $row['Status'];
-}
-
-$output = $sep = '';
-foreach( $arrayOut as $key => $value ) {
-    $output .= $sep .'"'.$key.'"'. ':' . '"'.$value.'"';
-    $sep = ',';
-}
-echo "{".$output."}";

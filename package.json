@@ -1,13 +1,17 @@
 {
-  "name": "nodebeticaorinokia",
+  "name": "shopinfopanelclient",
   "version": "1.0.0",
-  "description": "test program for web admin panel for a2 system",
+  "description": "clien program for web admin panel of a2 systems",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
+  "author": "Oscar Marquez",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sw4ttt/shopinfopanelclient.git"
+  },
   "dependencies": {
     "express": "^4.14.0",
     "node-schedule": "^1.2.0",
