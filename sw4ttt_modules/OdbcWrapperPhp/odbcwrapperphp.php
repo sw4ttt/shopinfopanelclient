@@ -1,9 +1,23 @@
 <?php
 
-define("DB_PATH", "C:/a2JEANSWEST/Empre001/DATA/");
-
-$db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName=".DB_PATH.";","master","....");
 $params = explode(",", $argv[1]);
+
+if (!is_dir($params[0]))
+{
+    fwrite(STDERR, "ERROR: PHP-Wrapper: Directorio de Base de Datos incorrecto!.");
+}
+else
+{
+    define("DB_PATH", $params[0]);
+    $db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName=".DB_PATH.";","master","....");
+    switch ($params[1]) {
+        case "userdata":
+            getUsersData($db);
+            break;
+        default:
+            fwrite(STDERR, "ERROR: PHP-Wrapper: Parametro de Consulta incorrecto.");
+    }
+}
 
 function getUsersData($db) 
 {  
@@ -21,13 +35,6 @@ function getSalesData()
 {   
 }
 
-switch ($params[0]) {
-    case "userdata":
-        getUsersData($db);
-        break;
-    default:
-        fwrite(STDERR, "ERROR PHP file params!.");
-}
 
 
 //echo $params[0] ." - " . $params[1] . " - " . $params[2];
