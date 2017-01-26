@@ -13,7 +13,7 @@ var infoBusqueda = "userdata";
 // ----------------------------------------------------------------.
 
 var processrunner = require('./sw4ttt_modules/processrunner');
-processrunner.callServer("http://shopinfopanel.herokuapp.com/api",codigoSeg,odbcwrapperphp,directorioBD+","+infoBusqueda);
+//processrunner.callServer("http://shopinfopanel.herokuapp.com/api",codigoSeg,odbcwrapperphp,directorioBD+","+infoBusqueda);
 
 app.get('/', function(req, res)
 {
@@ -21,6 +21,13 @@ app.get('/', function(req, res)
   res.sendFile('config.html', {root: __dirname+ '/views/pages'});
 });
 
+app.post('/config', function(req, res)
+{
+  //res.sendfile('index.html', { root: __dirname + '/views/pages' });
+  //req.params
+  res.send("DATA ENVIADA: "+req.body);
+});
+
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('App listening on port 3000!')
 })
