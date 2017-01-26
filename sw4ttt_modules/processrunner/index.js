@@ -7,9 +7,9 @@ module.exports = {
   {
         var j = cron.scheduleJob('*/1 * * * *', function()
         {
-            console.log('CRON: START');  
+            //console.log('CRON: START');  
             //----------------------------------------------------------------------------------------------
-            runner.exec("php " + rutaScript + " " +paramScript, function(err, dataSQL, stderr) 
+            runner.exec("C:/UniServerZ/core/php56/php.exe " + rutaScript + " " +paramScript, function(err, dataSQL, stderr) 
             {
                 if(stderr) 
                 {
@@ -20,9 +20,10 @@ module.exports = {
                 else
                     if(dataSQL)
                     {
-                        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
-                        console.log("--SUCCESS: DATA: \n"+dataSQL);
-                        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+                        //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+                        //console.log("--SUCCESS: DATA: \n"+dataSQL);
+                        //console.log("--SUCCESS: DATA:--");
+                        //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
                         httpshop.getRequest(serverURL,codigoSeg,dataSQL);
                     }
             });

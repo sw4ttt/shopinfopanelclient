@@ -18,16 +18,16 @@ module.exports = {
           });
           res.on('end', function() 
           {
-              console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
-              console.log("--SERVER: RESPUESTA: \n"+body.toString());
-              console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+              //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+              console.log("--SERVER: RESPUESTA: "+body.toString());
+              //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
           });
       })
       .on('error', function(e) 
       {
-          console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+          //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
           console.log("--ERROR: GET: \n" + e.message);
-          console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+          //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
       });
   }
 };
