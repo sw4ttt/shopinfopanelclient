@@ -1,7 +1,7 @@
 {
   "name": "shopinfopanelclient",
   "version": "1.0.0",
-  "description": "clien program for web admin panel of a2 systems",
+  "description": "client program for web admin panel of a2 systems",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
