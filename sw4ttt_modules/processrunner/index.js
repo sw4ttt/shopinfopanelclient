@@ -9,7 +9,7 @@ module.exports = {
         {
             //console.log('CRON: START');  
             //----------------------------------------------------------------------------------------------
-            runner.exec("C:/UniServerZ/core/php56/php.exe " + rutaScript + " " +paramScript, function(err, dataSQL, stderr) 
+            runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + rutaScript + " " +paramScript, function(err, dataSQL, stderr) 
             {
                 if(stderr) 
                 {

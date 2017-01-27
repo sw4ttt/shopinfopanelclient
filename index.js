@@ -1,9 +1,13 @@
 var express = require('express')
 var app = express()
 var Stringjs = require('string');
-var http = require('http');
-var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php"
-var bodyParser = require('body-parser')
+var http = require('http').createServer(app);
+var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
+var bodyParser = require('body-parser');
+
+io = require('socket.io').listen(http);
+
+
 app.use(express.static(__dirname + '/public'));
 // create application/json parser
 var jsonParser = bodyParser.json()
@@ -13,9 +17,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 // INFORMACION BASICA PARA CONFIGURAR EL CLIENTE DEL SISTEMA LOCAL.
-var nombreTienda = "";
+var nombreTienda = "Tienda001";
 var codigoSeg = "JtmzAMVx";
-var directorioBD = "C:/a2JEANSWEST/Empre001/DATA"+"/";
+var directorioBD = "D:/Web/a2testbd/DATA"+"/";
 var infoBusqueda = "userdata";
 // ----------------------------------------------------------------.
 
@@ -36,6 +40,15 @@ app.post('/config', urlencodedParser, function(req, res)
   res.send("DATA ENVIADA: ("+req.body.nombre+") - ("+req.body.codigo+") - ("+Stringjs(req.body.rutabd).replaceAll('\\', '/')+")");
 });
 
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+/*
 app.listen(3000, function () {
   console.log('App listening on port 3000!')
 })
+*/
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
