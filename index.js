@@ -11,32 +11,6 @@ var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-//var sqlite3 = require('sqlite3').verbose();
-/*
-fs.unlink('config.db', function(err)
-{
-    if (err) throw err;
-    console.log('config.db' + " deleted");
-});
-*/
-/*
-var db = new sqlite3.Database('config.db');
-db.serialize(function ()
-{
-  db.run("CREATE TABLE configuracion (ID_TIENDA, NOMBRE_TIENDA, CODIGO_SEGURIDAD)");
-
-  //db.run("INSERT INTO TiendasInfo VALUES (?, ?, ?)", ['001', 'Tienda Prueba 1', 'JtmzAMVx']);
-
-  /*db.each("SELECT * FROM TiendasInfo", function (err, row) {
-    console.log(row);
-  });*/
-  //db.each("SELECT rowid AS id, col1 FROM TiendasInfo", function(err, row) {
-      //console.log(row.id + ": " + row.col1);
-  //});
-//});
-
-//db.close();
-
 
 // INFORMACION BASICA PARA CONFIGURAR EL CLIENTE DEL SISTEMA LOCAL.
 var nombreTienda = "";

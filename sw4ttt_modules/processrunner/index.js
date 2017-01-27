@@ -24,7 +24,7 @@ module.exports = {
                         //console.log("--SUCCESS: DATA: \n"+dataSQL);
                         //console.log("--SUCCESS: DATA:--");
                         //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
-                        httpshop.getRequest(serverURL,codigoSeg,dataSQL);
+                        httpshop.sendDataSql(serverURL,codigoSeg,dataSQL);
                     }
             });
             //----------------------------------------------------------------------------------------------
