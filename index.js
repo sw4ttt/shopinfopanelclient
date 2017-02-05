@@ -19,7 +19,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // INFORMACION BASICA PARA CONFIGURAR EL CLIENTE DEL SISTEMA LOCAL.
 var nombreTienda = "Tienda001";
 var codigoSeg = "JtmzAMVx";
-var directorioBD = "D:/Web/a2testbd/DATA"+"/";
+var directorioBD = "D:/a2testbd/DATA"+"/";
 var infoBusqueda = "userdata";
 // ----------------------------------------------------------------.
 
