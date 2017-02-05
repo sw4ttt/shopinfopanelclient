@@ -23,8 +23,8 @@ var directorioBD = "D:/Web/a2testbd/DATA"+"/";
 var infoBusqueda = "userdata";
 // ----------------------------------------------------------------.
 
-var processrunner = require('./sw4ttt_modules/processrunner');
-processrunner.callServer("http://shopinfopanel.herokuapp.com/api",codigoSeg,odbcwrapperphp,directorioBD+","+infoBusqueda);
+//var processrunner = require('./sw4ttt_modules/processrunner');
+//processrunner.callServer("http://shopinfopanel.herokuapp.com/api",codigoSeg,odbcwrapperphp,directorioBD+","+infoBusqueda);
 
 app.get('/', function(req, res)
 {
@@ -38,6 +38,11 @@ app.post('/config', urlencodedParser, function(req, res)
   //req.params
   //Stringjs(req.body.rutabd).replaceAll('/', 'X');
   res.send("DATA ENVIADA: ("+req.body.nombre+") - ("+req.body.codigo+") - ("+Stringjs(req.body.rutabd).replaceAll('\\', '/')+")");
+});
+app.get('/potato', function(req, res)
+{
+  //res.sendfile('index.html', { root: __dirname + '/views/pages' });
+  res.send("potato res.");
 });
 
 io.on('connection', function(socket){

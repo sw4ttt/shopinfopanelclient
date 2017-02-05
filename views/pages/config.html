@@ -7,12 +7,12 @@
   <body>
         <div class="row main">
             <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
+                <div class="panel panel-default" id="target">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-tasks"></span><strong> PANEL DE CONFIGURACION DEL CLIENTE</strong>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="/config">
+                        <form class="form-horizontal">
                             <div class="form-group">
                                 <label for="nombre" class="col-sm-3 col-md-3 control-label">Nombre Tienda:</label>
                                 <div class="col-sm-7 col-md-7">
@@ -33,7 +33,7 @@
                             </div>                         
                             <div class="form-group">
                                 <div class="col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="guardar" class="btn btn-primary">
                                         <span class="glyphicon glyphicon-floppy-save"></span> Guardar
                                     </button>
                                 </div>
@@ -47,6 +47,12 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
+        socket.on('connect', function(){
+            $.LoadingOverlay("hide");
+        });
+        socket.on('disconnect', function(){
+            $.LoadingOverlay("show");
+        });
     </script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -56,4 +62,24 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
+    <script>
+        $("#guardar").click(function()
+        {
+            //$.LoadingOverlay("show");
+            $.get("/potato", function(data, status)
+            {
+                //$.LoadingOverlay("show");
+                //alert("Data: " + data + "\nStatus: " + status);
+                console.log(data);
+                 //$.LoadingOverlay("hide");
+            });
+        }); 
+        $(document).ajaxStart(function(){
+            $.LoadingOverlay("show");
+        });
+        $(document).ajaxStop(function(){
+            $.LoadingOverlay("hide");
+        });      
+    </script>
 </html>
