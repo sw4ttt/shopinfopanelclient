@@ -46,7 +46,11 @@ app.get('/potato', function(req, res)
 });
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+  console.log('User connected');
+  socket.on('disconnect', function () 
+  {
+    console.log('User disconnected');
+  });
 });
 
 /*

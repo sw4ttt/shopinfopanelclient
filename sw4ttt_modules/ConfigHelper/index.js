@@ -5,13 +5,20 @@ var httpshop = require('../httpshop');
 //console.log(this.checkConfigData("http://shopinfopanel.herokuapp.com/api","JtmzAMVx"));
 module.exports = 
 {
-    initConfig: function (idTienda,nombreTienda,codigoSeguridad,rutaA2) 
+    initConfig: function () 
     {
         var db = new sqlite3.Database(rutabd);
         db.serialize(function ()
         {
             db.run("DROP TABLE IF EXISTS configuracion");
             db.run("CREATE TABLE IF NOT EXISTS configuracion (ID_TIENDA, NOMBRE_TIENDA, CODIGO_SEGURIDAD, RUTA_A2, SERVER_URL)");   
+            db.run("INSERT INTO configuracion VALUES (?, ?, ?, ?, ?)", 
+                ['001', 'Tienda Prueba 1', 'JtmzAMVx', 'XXXX', 'http://shopinfopanel.herokuapp.com/api']);
+
+            db.run("DROP TABLE IF EXISTS server_info");
+            db.run("CREATE TABLE IF NOT EXISTS server_info (NOMBRE_SERVER, SERVER_URL)");  
+            db.run("INSERT INTO server_info VALUES (?, ?)", 
+                ['SERVIDOR', 'http://shopinfopanel.herokuapp.com/api']); 
         });
         db.close();
     }
@@ -42,9 +49,27 @@ module.exports =
                 ['001', 'Tienda Prueba 1', 'JtmzAMVx', 'XXXX', 'http://shopinfopanel.herokuapp.com/api']);*/
     }
     ,
-    getConfigData: function (idTienda,nombreTienda,codigoSeguridad,rutaA2) 
+    getConfigData: function () 
     {
+        //idTienda,nombreTienda,codigoSeguridad,rutaA2
         //serverURL = typeof serverURL  !== 'undefined' ? serverURL : "http://shopinfopanel.herokuapp.com/api";
+        var db = new sqlite3.Database(rutabd);
+        db.serialize(function ()
+        {
+            db.each("SELECT * FROM server_info", function (err, row) {
+                if (err === null)
+                {
+                    console.log(row);
+                }
+                else
+                {
+                    console.log(err);
+                }
+            });
+            /*db.each("SELECT rowid AS id, col1 FROM TiendasInfo", function(err, row) {
+                console.log(row.id + ": " + row.col1);
+            });*/
+        });
     }
 };
 /*

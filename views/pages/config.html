@@ -44,16 +44,6 @@
             </div>
         </div>
   </body>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-        socket.on('connect', function(){
-            $.LoadingOverlay("hide");
-        });
-        socket.on('disconnect', function(){
-            $.LoadingOverlay("show");
-        });
-    </script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -63,6 +53,29 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    
+        var socket = io();
+        socket.on('connect', function()
+        {
+            console.log('connect');
+            $.LoadingOverlay("hide");
+
+            socket.on('disconnect', function()
+            {
+                $.LoadingOverlay("show");
+                console.log('disconnect');
+            });
+        });
+
+        
+    </script>  
+    <script>
+        $( document ).ready(function() {
+            $.LoadingOverlay("show");
+        });
+    </script>  
     <script>
         $("#guardar").click(function()
         {
@@ -75,11 +88,13 @@
                  //$.LoadingOverlay("hide");
             });
         }); 
+        /*
         $(document).ajaxStart(function(){
             $.LoadingOverlay("show");
         });
         $(document).ajaxStop(function(){
             $.LoadingOverlay("hide");
-        });      
+        });   
+        */   
     </script>
 </html>
