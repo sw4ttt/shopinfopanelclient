@@ -2,7 +2,18 @@ var sqlite3 = require('sqlite3').verbose();
 var rutabd = "config.db";
 var httpshop = require('../httpshop');
 
+//var events = require('events');
+//var eventEmitter = new events.EventEmitter();
 //console.log(this.checkConfigData("http://shopinfopanel.herokuapp.com/api","JtmzAMVx"));
+/*
+    Data de configuracion
+        ID_TIENDA -> local
+        NOMBRE_TIENDA -> local
+        RUTA_A2 -> local
+        CODIGO_SEGURIDAD -> servidor
+        NOMBRE_SERVER -> servidor
+        SERVER_URL -> servidor
+*/
 module.exports = 
 {
     initConfig: function () 
@@ -12,8 +23,8 @@ module.exports =
         {
             db.run("DROP TABLE IF EXISTS configuracion");
             db.run("CREATE TABLE IF NOT EXISTS configuracion (ID_TIENDA, NOMBRE_TIENDA, CODIGO_SEGURIDAD, RUTA_A2, SERVER_URL)");   
-            db.run("INSERT INTO configuracion VALUES (?, ?, ?, ?, ?)", 
-                ['001', 'Tienda Prueba 1', 'JtmzAMVx', 'XXXX', 'http://shopinfopanel.herokuapp.com/api']);
+            //db.run("INSERT INTO configuracion VALUES (?, ?, ?, ?, ?)", 
+                //['001', 'Tienda Prueba 1', 'JtmzAMVx', 'XXXX', 'http://shopinfopanel.herokuapp.com/api']);
 
             db.run("DROP TABLE IF EXISTS server_info");
             db.run("CREATE TABLE IF NOT EXISTS server_info (NOMBRE_SERVER, SERVER_URL)");  
@@ -49,29 +60,58 @@ module.exports =
                 ['001', 'Tienda Prueba 1', 'JtmzAMVx', 'XXXX', 'http://shopinfopanel.herokuapp.com/api']);*/
     }
     ,
-    getConfigData: function () 
+    getConfigData: function (res) 
     {
         //idTienda,nombreTienda,codigoSeguridad,rutaA2
         //serverURL = typeof serverURL  !== 'undefined' ? serverURL : "http://shopinfopanel.herokuapp.com/api";
         var db = new sqlite3.Database(rutabd);
-        db.serialize(function ()
+        //db.serialize(function ()
+        //{
+        db.get("SELECT * FROM server_info", function (err, row) 
         {
-            db.each("SELECT * FROM server_info", function (err, row) {
+            if (row !== undefined)
+            {
+                //console.log("1 !== undefined");
+                //console.log(row); 
+                //return row; 
+                //res.send("ROW STUFF");
+                res.json(row);
+                //eventEmitter.emit('datarow',row);                
+            }
+            else
+            {
                 if (err === null)
                 {
-                    console.log(row);
+                    //console.log("ROW !== undefined, ERR === null ");
+                    //console.log(err);
+                    //res.send("ERROR STUFF");
+                    res.json({ "error":"Not Found" });
+                    
                 }
                 else
                 {
-                    console.log(err);
+                    //console.log("ROW !== undefined, ERR !== null ");
+                    //console.log(err);
+                    res.json({ "error":"Error Query" });
                 }
-            });
+            }
+        });
             /*db.each("SELECT rowid AS id, col1 FROM TiendasInfo", function(err, row) {
                 console.log(row.id + ": " + row.col1);
             });*/
-        });
+        //});
     }
 };
+/*
+        if (err === null)
+        {
+            console.log(row);
+        }
+        else
+        {
+            console.log(err);
+        }
+*/
 /*
 var stmt = db.prepare("INSERT INTO clientes VALUES (?,?,?)");
 stmt.run(null,userData.nombre,userData.edad);

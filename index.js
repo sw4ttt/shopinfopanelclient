@@ -6,7 +6,8 @@ var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
 var bodyParser = require('body-parser');
 
 io = require('socket.io').listen(http);
-
+var config = require('./sw4ttt_modules/confighelper');
+config.initConfig();
 
 app.use(express.static(__dirname + '/public'));
 // create application/json parser
@@ -39,10 +40,12 @@ app.post('/config', urlencodedParser, function(req, res)
   //Stringjs(req.body.rutabd).replaceAll('/', 'X');
   res.send("DATA ENVIADA: ("+req.body.nombre+") - ("+req.body.codigo+") - ("+Stringjs(req.body.rutabd).replaceAll('\\', '/')+")");
 });
-app.get('/potato', function(req, res)
+app.get('/getconfig', function(req, res)
 {
   //res.sendfile('index.html', { root: __dirname + '/views/pages' });
-  res.send("potato res.");
+  //res.send("potato res.");
+  config.getConfigData(res);
+  //res.json(config.getConfigData());
 });
 
 io.on('connection', function(socket){
