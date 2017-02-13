@@ -29,31 +29,39 @@ var infoBusqueda = "userdata";
 
 app.get('/', function(req, res)
 {
-  //res.sendfile('index.html', { root: __dirname + '/views/pages' });
-  res.sendFile('config.html', {root: __dirname+ '/views/pages'});
+    //res.sendfile('index.html', { root: __dirname + '/views/pages' });
+    res.sendFile('config.html', {root: __dirname+ '/views/pages'});
 });
 
-app.post('/config', urlencodedParser, function(req, res)
+app.post('/setconfig', urlencodedParser, function(req, res)
 {
-  //res.sendfile('index.html', { root: __dirname + '/views/pages' });
-  //req.params
-  //Stringjs(req.body.rutabd).replaceAll('/', 'X');
-  res.send("DATA ENVIADA: ("+req.body.nombre+") - ("+req.body.codigo+") - ("+Stringjs(req.body.rutabd).replaceAll('\\', '/')+")");
+    /*
+        nombreserver     
+        urlserver
+        nombretienda
+        codigo
+        rutabd
+    */
+    //res.sendfile('index.html', { root: __dirname + '/views/pages' });
+    //req.params
+    //Stringjs(req.body.rutabd).replaceAll('/', 'X');
+    res.send("DATA ENVIADA: ("+req.body.nombre+") - ("+req.body.codigo+") - ("+Stringjs(req.body.rutabd).replaceAll('\\', '/')+")");
 });
 app.get('/getconfig', function(req, res)
 {
-  //res.sendfile('index.html', { root: __dirname + '/views/pages' });
-  //res.send("potato res.");
-  config.getConfigData(res);
-  //res.json(config.getConfigData());
+    //res.sendfile('index.html', { root: __dirname + '/views/pages' });
+    //res.send("potato res.");
+    config.getConfigData(res);
+    //res.json(config.getConfigData());
 });
 
-io.on('connection', function(socket){
-  console.log('User connected');
-  socket.on('disconnect', function () 
-  {
-    console.log('User disconnected');
-  });
+io.on('connection', function(socket)
+{
+    console.log('User connected');
+    socket.on('disconnect', function () 
+    {
+      console.log('User disconnected');
+    });
 });
 
 /*
@@ -62,5 +70,5 @@ app.listen(3000, function () {
 })
 */
 http.listen(3000, function(){
-  console.log('listening on *:3000');
+    console.log('listening on *:3000');
 });

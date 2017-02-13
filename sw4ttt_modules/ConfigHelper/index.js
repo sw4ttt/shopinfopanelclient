@@ -21,15 +21,11 @@ module.exports =
         var db = new sqlite3.Database(rutabd);
         db.serialize(function ()
         {
-            db.run("DROP TABLE IF EXISTS configuracion");
-            db.run("CREATE TABLE IF NOT EXISTS configuracion (ID_TIENDA, NOMBRE_TIENDA, CODIGO_SEGURIDAD, RUTA_A2, SERVER_URL)");   
-            //db.run("INSERT INTO configuracion VALUES (?, ?, ?, ?, ?)", 
-                //['001', 'Tienda Prueba 1', 'JtmzAMVx', 'XXXX', 'http://shopinfopanel.herokuapp.com/api']);
+            db.run("DROP TABLE IF EXISTS CONFIGURACION");
+            db.run("CREATE TABLE IF NOT EXISTS CONFIGURACION (ID_TIENDA, NOMBRE_TIENDA, CODIGO_SEGURIDAD, RUTA_A2, NOMBRE_SERVER, SERVER_URL)");   
+            //db.run("INSERT INTO configuracion VALUES (?, ?, ?, ?, ?, ?)", 
+                //['001', 'Tienda Prueba 1', 'JtmzAMVx', 'XXXX', 'admin server a2', 'http://shopinfopanel.herokuapp.com/api']);
 
-            db.run("DROP TABLE IF EXISTS server_info");
-            db.run("CREATE TABLE IF NOT EXISTS server_info (NOMBRE_SERVER, SERVER_URL)");  
-            db.run("INSERT INTO server_info VALUES (?, ?)", 
-                ['SERVIDOR', 'http://shopinfopanel.herokuapp.com/api']); 
         });
         db.close();
     }
@@ -56,8 +52,8 @@ module.exports =
     setConfigData: function (idTienda,nombreTienda,codigoSeguridad,rutaA2) 
     {
         //serverURL = typeof serverURL  !== 'undefined' ? serverURL : "http://shopinfopanel.herokuapp.com/api";
-        /*db.run("INSERT INTO configuracion VALUES (?, ?, ?, ?, ?)", 
-                ['001', 'Tienda Prueba 1', 'JtmzAMVx', 'XXXX', 'http://shopinfopanel.herokuapp.com/api']);*/
+        //db.run("INSERT INTO configuracion VALUES (?, ?, ?, ?, ?, ?)", 
+                //['001', 'Tienda Prueba 1', 'JtmzAMVx', 'XXXX', 'admin server a2', 'http://shopinfopanel.herokuapp.com/api']);
     }
     ,
     getConfigData: function (res) 
@@ -67,7 +63,7 @@ module.exports =
         var db = new sqlite3.Database(rutabd);
         //db.serialize(function ()
         //{
-        db.get("SELECT * FROM server_info", function (err, row) 
+        db.get("SELECT * FROM CONFIGURACION", function (err, row) 
         {
             if (row !== undefined)
             {
