@@ -19,6 +19,17 @@ app.use(express.static(__dirname + '/public'));
 // create application/x-www-form-urlencoded parser
 //var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+confighelper.initConfig(function(err,exitcode)
+{
+    if(err)
+    {
+        console.log("Error:",err);
+    }
+    else
+    {
+        console.log("confighelper.initconfig-> exitcode:",exitcode);
+    }
+});
 
 // INFORMACION BASICA PARA CONFIGURAR EL CLIENTE DEL SISTEMA LOCAL.
 var nombreTienda = "Tienda001";
@@ -31,8 +42,6 @@ var infoBusqueda = "userdata";
 //processrunner.callServer("http://shopinfopanel.herokuapp.com/api",codigoSeg,odbcwrapperphp,directorioBD+","+infoBusqueda);
 
 var router = require('./sw4ttt_modules/router');
-
-// ...
 
 app.use('/', router);
 

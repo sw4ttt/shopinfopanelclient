@@ -6,8 +6,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // middleware that is specific to this router
 router.use(function timeLog (req, res, next) {
-  console.log('Time: ', Date.now())
-  next()
+    var now = new Date(Date.now()).toLocaleString();
+    console.log('Time: ', now);
+    next();
 })
 // define the home page route
 router.get('/', function (req, res) 
