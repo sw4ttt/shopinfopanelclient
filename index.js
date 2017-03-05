@@ -6,8 +6,17 @@ var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
 var bodyParser = require('body-parser');
 
 io = require('socket.io').listen(http);
-var config = require('./sw4ttt_modules/confighelper');
-config.initConfig();
+//var config = require('./sw4ttt_modules/confighelper/index.js');
+
+//config = new ConfigHelper();
+//config.initConfig();
+
+var confighelper = require('./sw4ttt_modules/confighelper');
+
+//var u = new user.User();
+//vs
+var confighelper = new confighelper();
+confighelper.test();
 
 app.use(express.static(__dirname + '/public'));
 // create application/json parser
@@ -20,7 +29,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // INFORMACION BASICA PARA CONFIGURAR EL CLIENTE DEL SISTEMA LOCAL.
 var nombreTienda = "Tienda001";
 var codigoSeg = "JtmzAMVx";
-var directorioBD = "D:/a2testbd/DATA"+"/";
+var directorioBD = "C:/a2Softway/Empre001/DATA"+"/";//C:\a2Softway\Empre001\Data
 var infoBusqueda = "userdata";
 // ----------------------------------------------------------------.
 
@@ -51,7 +60,9 @@ app.get('/getconfig', function(req, res)
 {
     //res.sendfile('index.html', { root: __dirname + '/views/pages' });
     //res.send("potato res.");
-    config.getConfigData(res);
+    //config.getConfigData(res);
+
+    //config.test();
     //res.json(config.getConfigData());
 });
 
