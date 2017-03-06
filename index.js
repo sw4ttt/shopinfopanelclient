@@ -4,8 +4,8 @@ var Stringjs = require('string');
 var http = require('http').createServer(app);
 var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
 //var bodyParser = require('body-parser');
-var confighelper = require('./sw4ttt_modules/confighelper');
-var confighelper = new confighelper();
+//var confighelper = require('./sw4ttt_modules/confighelper');
+//var confighelper = new confighelper();
 io = require('socket.io').listen(http);
 
 
@@ -19,18 +19,6 @@ app.use(express.static(__dirname + '/public'));
 // create application/x-www-form-urlencoded parser
 //var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-confighelper.initConfig(function(err,exitcode)
-{
-    if(err)
-    {
-        console.log("Error:",err);
-    }
-    else
-    {
-        console.log("confighelper.initconfig-> exitcode:",exitcode);
-    }
-});
-
 // INFORMACION BASICA PARA CONFIGURAR EL CLIENTE DEL SISTEMA LOCAL.
 var nombreTienda = "Tienda001";
 var codigoSeg = "JtmzAMVx";
@@ -41,10 +29,17 @@ var infoBusqueda = "userdata";
 //var processrunner = require('./sw4ttt_modules/processrunner');
 //processrunner.callServer("http://shopinfopanel.herokuapp.com/api",codigoSeg,odbcwrapperphp,directorioBD+","+infoBusqueda);
 
-var router = require('./sw4ttt_modules/router');
-
+var router = require('./routers/router');
+var configrouter = require('./routers/configrouter');
 app.use('/', router);
+app.use('/config', configrouter);
 
+/*
+app.get('/', function (req, res) 
+{
+    
+})
+*/
 io.on('connection', function(socket)
 {
     console.log('User connected');

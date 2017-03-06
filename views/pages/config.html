@@ -111,10 +111,10 @@
             $("#codigo").LoadingOverlay("show");  
             $("#rutabd").LoadingOverlay("show");
 
-            $.get("/getconfig", function(data, status)
+            $.get("/config/getconfig", function(data, status)
             {
                 
-                if (data.NOMBRE_SERVER)
+                if (data)
                 {
                     //console.log(data.NOMBRE_SERVER);
                     $("#nombreserver").val(data.NOMBRE_SERVER);
@@ -129,6 +129,7 @@
                     $("#nombretienda").LoadingOverlay("hide");  
                     $("#codigo").LoadingOverlay("hide");  
                     $("#rutabd").LoadingOverlay("hide");  
+                    console.log(data.msg);
                 }
                 else
                 { 
