@@ -1,7 +1,10 @@
+/**
+ * Created by Oscar Marquez on 6/3/2017.
+ */
 "use strict";
 var express = require('express');
 var configRouter = express.Router();
-var confighelper = require('../sw4ttt_modules/confighelper/confighelper.js');
+var confighelper = require('../../sw4ttt_modules/confighelper/confighelper.js');
 var confighelper = new confighelper();
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -29,8 +32,8 @@ configRouter.get('/getconfig', function(req, res)
 
     //config.test();
     //res.json(config.getConfigData());
-    //res.status(200).json({ msg: 'todo bien' });
-
+    res.status(200).json({ msg: 'todo bien' });
+    /*
     confighelper.initConfig(function(err,exitcode)
     {
         if(err)
@@ -42,17 +45,18 @@ configRouter.get('/getconfig', function(req, res)
             console.log("confighelper.initconfig-> exitcode:",exitcode);
         }
     });
+    */
 });
 
 configRouter.post('/setconfig', urlencodedParser, function(req, res)
 {
-    
-        // nombreserver     
-        // urlserver
-        // nombretienda
-        // codigo
-        // rutabd
-    
+
+    // nombreserver
+    // urlserver
+    // nombretienda
+    // codigo
+    // rutabd
+
     //res.sendfile('index.html', { root: __dirname + '/views/pages' });
     //req.params
     //Stringjs(req.body.rutabd).replaceAll('/', 'X');

@@ -9,11 +9,13 @@ router.use(function timeLog (req, res, next) {
     var now = new Date(Date.now()).toLocaleString();
     console.log('Time: ', now);
     next();
-})
+});
 // define the home page route
 router.get('/', function (req, res) 
 {
   res.sendFile('config.html', {root: './views/pages'});
-})
+});
+
+router.use('/config', require('./confighelper'));
 
 module.exports = router

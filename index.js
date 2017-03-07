@@ -1,5 +1,5 @@
-var express = require('express')
-var app = express()
+var express = require('express');
+var app = express();
 var Stringjs = require('string');
 var http = require('http').createServer(app);
 var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
@@ -29,10 +29,11 @@ var infoBusqueda = "userdata";
 //var processrunner = require('./sw4ttt_modules/processrunner');
 //processrunner.callServer("http://shopinfopanel.herokuapp.com/api",codigoSeg,odbcwrapperphp,directorioBD+","+infoBusqueda);
 
-var router = require('./routers/router');
-var configrouter = require('./routers/configrouter');
+var router = require('./api/router');
+//var configrouter = require('./routers/configrouter');
+
 app.use('/', router);
-app.use('/config', configrouter);
+//app.use('/config', configrouter);
 
 /*
 app.get('/', function (req, res) 
