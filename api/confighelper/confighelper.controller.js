@@ -10,7 +10,6 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var confighelper = function () {};
-//confighelper.prototype();
 
 confighelper.prototype.getConfig = function (callback)
 {

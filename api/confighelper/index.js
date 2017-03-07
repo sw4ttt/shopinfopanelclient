@@ -5,8 +5,8 @@
 var express = require('express');
 var router = express.Router();
 
-var configHelperController = require('./confighelper.controller');
-configHelperController = new configHelperController();
+var configHelperController = new (require('./confighelper.controller'));
+//configHelperController = new configHelperController();
 
 
 router.get('/getconfig', function(req, res)
