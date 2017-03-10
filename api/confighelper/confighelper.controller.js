@@ -4,16 +4,19 @@
 "use strict";
 var express = require('express');
 //var configRouter = express.Router();
-//var confighelper = require('../../sw4ttt_modules/confighelper/confighelper.js');
+var configHelper = require('../../sw4ttt_modules/configHelper/model.js');
 //var confighelper = new confighelper();
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-var confighelper = function () {};
+var controller = function () {};
+configHelper = new configHelper();
 
-confighelper.prototype.getConfig = function (callback)
+controller.prototype.getConfig = function (req, res,callback)
 {
-    callback(null,{stuff:"todo bien"});
+    //callback(null,{stuff:"todo bien"});
+    configHelper.prinftSchema();
+    res.status(200).json({ msg: 'todo bien' });
 }
 
 
@@ -72,4 +75,4 @@ confighelper.prototype.getConfig = function (callback)
 // });
 
 
-module.exports = confighelper;
+module.exports = controller;

@@ -4,10 +4,6 @@ var _ = require('lodash');
 var dbpath = "config.db";
 var schema = require('./schema.js');
 
-_.forEach(schema, function(value) {
-    console.log(value);
-});
-
 var model = function () {};
 
 model.prototype.initConfig = function (callback)
@@ -32,6 +28,13 @@ model.prototype.initConfig = function (callback)
 
     });
     db.close();
+}
+
+model.prototype.prinftSchema = function ()
+{
+    _.forEach(schema, function(value) {
+        console.log(value);
+    });
 }
 
 module.exports = model;

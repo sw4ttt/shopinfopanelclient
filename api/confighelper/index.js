@@ -9,22 +9,7 @@ var configHelperController = new (require('./confighelper.controller'));
 //configHelperController = new configHelperController();
 
 
-router.get('/getconfig', function(req, res)
-{
-
-    configHelperController.getConfig(function(err,data)
-    {
-        if(err)
-        {
-            console.log("Error:",err);
-        }
-        else
-        {
-            //console.log("configHelperController.getConfig - DATA:",data);
-            res.status(200).json(data);
-        }
-    });
-});
+router.get('/getconfig', configHelperController.getConfig);
 module.exports = router;
 
 
