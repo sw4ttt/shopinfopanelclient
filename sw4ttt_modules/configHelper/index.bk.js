@@ -10,7 +10,7 @@ var httpshop = require('../httpshop');
         ID_TIENDA -> local
         NOMBRE_TIENDA -> local
         RUTA_A2 -> local
-        CODIGO_SEGURIDAD -> servidor
+        CODIGO_SEGURIDAD -> local - (se verifica con servidor)
         NOMBRE_SERVER -> servidor
         SERVER_URL -> servidor
 */

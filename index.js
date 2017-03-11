@@ -3,12 +3,14 @@ var app = express();
 var Stringjs = require('string');
 var http = require('http').createServer(app);
 var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
+var databaseHelper = require("./sw4ttt_modules/databaseHelper/model");
 //var bodyParser = require('body-parser');
 //var confighelper = require('./sw4ttt_modules/confighelper');
 //var confighelper = new confighelper();
 io = require('socket.io').listen(http);
 
-
+databaseHelper = new databaseHelper();
+databaseHelper.initConfig();
 //config.initConfig();
 //confighelper.test();
 
