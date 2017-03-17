@@ -10,11 +10,7 @@ var databaseHelper = require("./sw4ttt_modules/databaseHelper/model.js");
 io = require('socket.io').listen(http);
 
 databaseHelper = new databaseHelper();
-databaseHelper.initDbConfig(function (err) {
-    if(err===null)
-    console.log("bien");
-    console.log("ERROR=",err);
-});
+databaseHelper.showTables();
 //config.initConfig();
 //confighelper.test();
 
