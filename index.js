@@ -1,16 +1,40 @@
 var express = require('express');
 var app = express();
 var Stringjs = require('string');
+var _ = require('lodash');
 var http = require('http').createServer(app);
 var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
-var databaseHelper = require("./sw4ttt_modules/databaseHelper/model.js");
+var databaseHelper = require("./sw4ttt_modules/dbHelper/model.js");
 //var bodyParser = require('body-parser');
 //var confighelper = require('./sw4ttt_modules/confighelper');
 //var confighelper = new confighelper();
 io = require('socket.io').listen(http);
 
 databaseHelper = new databaseHelper();
-databaseHelper.showTables();
+console.log("EXIST- configuration=");
+databaseHelper.getData(
+    [
+        "ID_TIENDA",
+        "NOMBRE_TIENDA",
+        "CODIGO_SEGURIDAD"
+    ],function (err,response) {
+        if (err) console.log("ERR en existTable =",err);
+        if (response)
+        {
+            console.log(response);
+        }
+        else
+            console.log("NOT response");
+
+    })
+// databaseHelper.existTable("users",function (err,response) {
+//     if (err) console.log("ERR en existTable =",err);
+//     if (response)
+//         console.log("FOUND");
+//     else
+//         console.log("NOT FOUND");
+//
+// })
 //config.initConfig();
 //confighelper.test();
 
