@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
-var Stringjs = require('string');
 var _ = require('lodash');
+var S = require('string');
 var http = require('http').createServer(app);
 var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
 var databaseHelper = require("./sw4ttt_modules/dbHelper/model.js");
@@ -10,23 +10,29 @@ var databaseHelper = require("./sw4ttt_modules/dbHelper/model.js");
 //var confighelper = new confighelper();
 io = require('socket.io').listen(http);
 
-databaseHelper = new databaseHelper();
-console.log("EXIST- configuration=");
-databaseHelper.getData(
-    [
-        "ID_TIENDA",
-        "NOMBRE_TIENDA",
-        "CODIGO_SEGURIDAD"
-    ],function (err,response) {
-        if (err) console.log("ERR en existTable =",err);
-        if (response)
-        {
-            console.log(response);
-        }
-        else
-            console.log("NOT response");
-
-    })
+var queryTest = "";
+var data = ['data1','data2','data3','data4'];
+// _.forEach(data, function(value) {
+//     queryTest = queryTest + value + ',';
+// });
+var qt = "";
+for (var i = 0; i < data.length; i++) {
+    qt = qt +"?,";
+}
+qt = S(qt).chompRight(',').s;
+var query = "INSERT INTO "+_.toUpper("tabla")+" VALUES ("+qt+")";
+console.log("queryTest=<"+query+">");
+// console.log("EXIST- configuration=");
+// databaseHelper.getData("configuration",function (err,response) {
+//         if (err) console.log("ERR en existTable =",err);
+//         if (response)
+//         {
+//             console.log(response);
+//         }
+//         else
+//             console.log("NOT response");
+//
+//     })
 // databaseHelper.existTable("users",function (err,response) {
 //     if (err) console.log("ERR en existTable =",err);
 //     if (response)
