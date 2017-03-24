@@ -6,22 +6,28 @@ var http = require('http').createServer(app);
 var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
 var databaseHelper = require("./sw4ttt_modules/dbHelper/model.js");
 //var bodyParser = require('body-parser');
-//var confighelper = require('./sw4ttt_modules/confighelper');
+// var config = require('./models/config/model.js');
 //var confighelper = new confighelper();
 io = require('socket.io').listen(http);
 
-var queryTest = "";
-var data = ['data1','data2','data3','data4'];
-// _.forEach(data, function(value) {
-//     queryTest = queryTest + value + ',';
-// });
-var qt = "";
-for (var i = 0; i < data.length; i++) {
-    qt = qt +"?,";
-}
-qt = S(qt).chompRight(',').s;
-var query = "INSERT INTO "+_.toUpper("tabla")+" VALUES ("+qt+")";
-console.log("queryTest=<"+query+">");
+// config.resetConfig(function (err,response) {
+//     if (err)
+//         console.log(err);
+//     console.log("response=",response);
+// })
+
+// var queryTest = "";
+// var data = ['data1','data2','data3','data4'];
+// // _.forEach(data, function(value) {
+// //     queryTest = queryTest + value + ',';
+// // });
+// var qt = "";
+// for (var i = 0; i < data.length; i++) {
+//     qt = qt +"?,";
+// }
+// qt = S(qt).chompRight(',').s;
+// var query = "INSERT INTO "+_.toUpper("tabla")+" VALUES ("+qt+")";
+// console.log("queryTest=<"+query+">");
 // console.log("EXIST- configuration=");
 // databaseHelper.getData("configuration",function (err,response) {
 //         if (err) console.log("ERR en existTable =",err);

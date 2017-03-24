@@ -5,11 +5,15 @@
 var express = require('express');
 var router = express.Router();
 
-var configHelperController = new (require('./confighelper.controller'));
+var controller = './controller.js';
+
+// var configHelperController = new (require('./confighelper.controller'));
 //configHelperController = new configHelperController();
 
 
-router.get('/getconfig', configHelperController.getConfig);
+router.get('/getconfig', controller.all);
+
+
 module.exports = router;
 
 
