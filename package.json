@@ -4,7 +4,7 @@
   "description": "client program for web admin panel of a2 systems",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "author": "Oscar Marquez",
   "license": "ISC",

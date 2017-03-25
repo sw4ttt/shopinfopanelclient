@@ -14,9 +14,7 @@ configHelper = new configHelper();
 
 controller.prototype.getConfig = function (req, res,callback)
 {
-    //callback(null,{stuff:"todo bien"});
-    configHelper.prinftSchema();
-    res.status(200).json({ msg: 'todo bien' });
+    res.status(200).json({ msg: 'OK' });
 }
 
 

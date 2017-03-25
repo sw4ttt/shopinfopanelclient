@@ -16,6 +16,6 @@ router.get('/', function (req, res)
   res.sendFile('config.html', {root: './views/pages'});
 });
 
-router.use('/config', require('./confighelper'));
+router.use('/config', require('./config'));
 
 module.exports = router
