@@ -4,7 +4,7 @@
 "use strict";
 
 exports.all = function(req,res) {
-    res.status(200).json({ msg: 'todo bien' });
+    res.status(200).json({ msg: 'CONFIG' });
 };
 
 
