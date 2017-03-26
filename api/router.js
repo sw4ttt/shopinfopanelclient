@@ -13,9 +13,11 @@ router.use(function timeLog (req, res, next) {
 // define the home page route
 router.get('/', function (req, res) 
 {
-  res.sendFile('config.html', {root: './views/pages'});
+  res.sendFile('config.html', {root: './views/config'});
 });
 
+
+router.use('/dashboard', require('./dashboard'));
 router.use('/config', require('./config'));
 
 module.exports = router
