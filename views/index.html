@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopInfoPanel Client</title>
+</head>
+<body>
+    <h2>DATA TIENDA:</h2>
+    <div id="dataBlock">
+
+
+    </div>
+
+</body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    $( document ).ready(function()
+    {
+//        $( "#dataBlock" ).append( "<label>DATA</label>" );
+
+        $.get("/data", function(data, status)
+        {
+
+            if (data)
+            {
+                $( "#dataBlock" ).append( "<label>"+data.msg+"</label>" );
+                console.log("data=",data)
+            }
+            else
+            {
+                $( "#dataBlock" ).append( "<label>NO DATA</label>" );
+            }
+
+        });
+    });
+</script>
+</html>

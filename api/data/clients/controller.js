@@ -4,6 +4,5 @@
 "use strict";
 
 exports.all = function(req,res) {
-    res.status(200).json({ msg: 'DASHBOARD' });
+    res.status(200).json({ msg: 'DATA - CLIENTS CONTROLLER' });
 };
-

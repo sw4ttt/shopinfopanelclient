@@ -13,10 +13,10 @@ router.use(function timeLog (req, res, next) {
 // define the home page route
 router.get('/', function (req, res) 
 {
-  res.sendFile('config.html', {root: './views/config'});
+  res.sendFile('index.html', {root: './views'});
 });
 
-
+router.use('/data', require('./data'));
 router.use('/dashboard', require('./dashboard'));
 router.use('/config', require('./config'));
 
