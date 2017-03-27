@@ -9,7 +9,7 @@ if (!is_dir($params[0]))
 else
 {
     define("DB_PATH", $params[0]);
-    $db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName="."D:/Web/a2testbd/DATA/".";","master","....");
+    $db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName=".$params[0].";","master","....");
     switch ($params[1]) {
         case "userdata":
             getUsersData($db);
@@ -31,8 +31,17 @@ function getUsersData($db)
     }
     echo json_encode($arrayOut);
 }
-function getSalesData() 
-{   
+function getSalesData($db)
+{
+    $res = odbc_exec($db,"SELECT Nombre,Descripcion,Clave FROM Susuarios");
+    $arrayOut = array();
+    $index = 0;
+    while($row = odbc_fetch_array($res))
+    {
+        $arrayOut[$index]  = $row;
+        $index++;
+    }
+    echo json_encode($arrayOut);
 }
 
 

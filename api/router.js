@@ -17,7 +17,6 @@ router.get('/', function (req, res)
 });
 
 router.use('/data', require('./data'));
-router.use('/dashboard', require('./dashboard'));
 router.use('/config', require('./config'));
 
 module.exports = router
