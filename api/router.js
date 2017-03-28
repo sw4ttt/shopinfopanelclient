@@ -16,7 +16,7 @@ router.get('/', function (req, res)
   res.sendFile('index.html', {root: './views'});
 });
 
-router.use('/data', require('./data'));
-router.use('/config', require('./config'));
+router.use('/api/data', require('./data'));
+router.use('/api/config', require('./config'));
 
 module.exports = router
