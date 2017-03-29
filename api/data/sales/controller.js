@@ -10,14 +10,17 @@ exports.all = function(req,res) {
 };
 
 exports.get = function(req,res) {
-    model.get(function (err,data) {
-        if (err)
-            res.status(401).send({ msg:'error', error:err });
+    if (!req.params)
+        res.status(401).send({ msg:'error', error:{key:"MISSING_PARAMS",message:"Missing parameters on request."} });
+    console.log("req.params.query=",req.params.date);
+    var query = req.params.date;
+    model.get(query,function (err,data) {
+        if (err) res.status(401).send({ msg:'error', error:err });
         // res.status(200).send({ msg:'success', data:data});
         // console.log("data=",data)
-        _.forEach(data,function (row) {
-            console.log("row=",row);
-        })
+        // _.forEach(data,function (row) {
+        //     console.log("row=",row);
+        // })
         res.status(200).send({ msg:'success', data:data});
     })
 

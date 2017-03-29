@@ -5,12 +5,19 @@
 var _ = require('lodash');
 var runner = require("child_process");
 var async = require('async');
+var fs = require('fs');
 
 var model = {};
 
-var rutaScript = __dirname + "/../../../sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
+var rutaScript = __dirname + "/../../../../sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
 // var paramScript = ["userdata"];
 var paramScript = ["C:/a2Softway/Empre001/Data/"];
+
+model.checkDb = function (dbPath,callback){
+    if (fs.existsSync(dbPath))
+        return callback(null,true);
+    else return callback(false);
+}
 model.get = function (query,callback)
 {
     async.series(
@@ -18,12 +25,8 @@ model.get = function (query,callback)
             function(callback1) {
                 // do some stuff ...
                 // callback1(null,{data:"todo cool1"});
-                // paramScript[1]=query.toString();
-                paramScript[1]="SELECT*Nombre+Descripcion+Clave*FROM*Susuarios";
-                var test="SELECT Nombre,Descripcion,Clave FROM Susuarios";
-                // paramScript[2]="00001327";
-                console.log("query formatted=",prepareQuery(test))
-                // console.log("paramScript=",paramScript)
+                paramScript[1]=query.toString();
+                console.log("paramScript=",paramScript)
                 runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + rutaScript + " " +paramScript, function(err, dataSQL, stderr)
                 {
                     if(err)
@@ -49,11 +52,5 @@ model.get = function (query,callback)
             }
         });
 };
-
-function prepareQuery(query) {
-    var tmp = _.replace(query, ' ', '*');
-    tmp = _.replace(tmp, ',', '+');
-    return tmp;
-}
 
 module.exports = model;

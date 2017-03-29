@@ -9,15 +9,33 @@ if (!is_dir($params[0]))
 else
 {
     define("DB_PATH", $params[0]);
+
     $db = odbc_connect("DRIVER={DBISAM 4 ODBC Driver (Read-Only)};ConnectionType=Local;CatalogName=".$params[0].";","master","....");
-    switch ($params[1]) {
-        case "userdata":
-            getUsersData($db);
-            break;
-        default:
-            fwrite(STDERR, "ERROR: PHP-Wrapper: Parametro de Consulta incorrecto.");
+    $query = $params[1];
+    $query = str_replace("*", " ", $query);
+    $query = str_replace("+", ",", $query);
+//    echo $query;
+    $res = odbc_exec($db,$query);
+    $arrayOut = array();
+    $index = 0;
+    while($row = odbc_fetch_array($res))
+    {
+        $arrayOut[$index]  = $row;
+        $index++;
     }
+    echo json_encode($arrayOut);
+//    switch ($params[1]) {
+//        case "userdata":
+//            getUsersData($db);
+//            break;
+//        case "salesdata":
+//            getSalesData($db,$params[2]);
+//            break;
+//        default:
+//            fwrite(STDERR, "ERROR: PHP-Wrapper: Parametro de Consulta incorrecto.");
+//    }
 }
+
 
 function getUsersData($db) 
 {  
@@ -31,9 +49,11 @@ function getUsersData($db)
     }
     echo json_encode($arrayOut);
 }
-function getSalesData($db)
+function getSalesData($db,$id)
 {
-    $res = odbc_exec($db,"SELECT Nombre,Descripcion,Clave FROM Susuarios");
+//    $res = odbc_exec($db,"SELECT Nombre,Descripcion,Clave FROM Susuarios");
+    $query = "SELECT FTI_DOCUMENTO FROM SOperacionInv WHERE FTI_DOCUMENTO = '".$id."'";
+    $res = odbc_exec($db,$query);
     $arrayOut = array();
     $index = 0;
     while($row = odbc_fetch_array($res))

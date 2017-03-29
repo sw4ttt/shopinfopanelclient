@@ -93,6 +93,6 @@ app.listen(3000, function () {
   console.log('App listening on port 3000!')
 })
 */
-http.listen(3333, function(){
-    console.log('listening on *:3333');
+http.listen(3000, function(){
+    console.log('listening on *:3000');
 });
