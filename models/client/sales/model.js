@@ -5,6 +5,7 @@
 var _ = require('lodash');
 var runner = require("child_process");
 var async = require('async');
+var S = require('string');
 
 var model = {};
 
@@ -19,10 +20,11 @@ model.get = function (query,callback)
                 // do some stuff ...
                 // callback1(null,{data:"todo cool1"});
                 // paramScript[1]=query.toString();
-                paramScript[1]="SELECT*Nombre+Descripcion+Clave*FROM*Susuarios";
+                // paramScript[1]="SELECT*Nombre+Descripcion+Clave*FROM*Susuarios";
                 var test="SELECT Nombre,Descripcion,Clave FROM Susuarios";
                 // paramScript[2]="00001327";
                 console.log("query formatted=",prepareQuery(test))
+                paramScript[1] = prepareQuery(test);
                 // console.log("paramScript=",paramScript)
                 runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + rutaScript + " " +paramScript, function(err, dataSQL, stderr)
                 {
@@ -51,9 +53,8 @@ model.get = function (query,callback)
 };
 
 function prepareQuery(query) {
-    var tmp = _.replace(query, ' ', '*');
-    tmp = _.replace(tmp, ',', '+');
-    return tmp;
+    var tmp = S(query).replaceAll(' ', '*').s;
+    return S(tmp).replaceAll(',', '+').s;
 }
 
 module.exports = model;
