@@ -28,35 +28,34 @@ model.get = function (query,callback)
                 paramScript[1] = prepareQuery(query);
                 runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
                 {
-                    if(err)
-                        return callbackAsync(err);
-                    else
+                    // if(err)
+                    //     return callbackAsync(err);
+                    console.log("stderr=",stderr)
                     if(stderr)
-                        return callbackAsync({err:stderr});
-                    else
-                    {
-                        // if(_.isString(dataSQL))
-                        //     return callbackAsync(null,(dataSQL));
-                        // return callbackAsync(null,JSON.parse(dataSQL));
-                        //
-                        try {
-                            return callbackAsync(null,JSON.parse(dataSQL));
-                        } catch (e) {
-                            return callbackAsync(null,(dataSQL));
-                        }
-
-                    }
-
+                        return callbackAsync(stderr);
+                    return callbackAsync(null,dataSQL);
+                    // if(err)
+                    //     return callbackAsync(err);
+                    // if(stderr)
+                    //     return callbackAsync({err:stderr});
+                    // return callbackAsync(null,dataSQL);
                 });
             }
         ],
         function(err, response) {
             if (err)
-            {
-                console.log("async.series.err=",err);
-                return callback(err);
-            }
-            return callback(null,response[0]);
+                return callback(JSON.parse(err));
+            return callback(null,JSON.parse(response[0]));
+            // var out = null;
+            // try {
+            //     out = );
+            // }
+            // catch (e) {
+            // }
+            // if (!out)
+            //     return callback(response[0]);
+            // return callback(null,out);
+
         });
 };
 

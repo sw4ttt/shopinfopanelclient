@@ -18,7 +18,7 @@ else
     $response = odbc_exec($db,$query);
 
     if (!$response){
-        echo odbc_error();
+        echo fwrite(STDERR,odbc_error());
     }else {
         $arrayOut = array();
         $index = 0;
