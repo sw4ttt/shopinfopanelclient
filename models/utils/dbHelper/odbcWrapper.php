@@ -15,15 +15,21 @@ else
     $query = str_replace("*", " ", $query);
     $query = str_replace("+", ",", $query);
 //    echo $query;
-    $res = odbc_exec($db,$query);
-    $arrayOut = array();
-    $index = 0;
-    while($row = odbc_fetch_array($res))
-    {
-        $arrayOut[$index]  = $row;
-        $index++;
+    $response = odbc_exec($db,$query);
+
+    if (!$response){
+        echo odbc_error();
+    }else {
+        $arrayOut = array();
+        $index = 0;
+        while($row = odbc_fetch_array($response))
+        {
+            $arrayOut[$index]  = $row;
+            $index++;
+        }
+        echo json_encode($arrayOut);
     }
-    echo json_encode($arrayOut);
+
 //    switch ($params[1]) {
 //        case "userdata":
 //            getUsersData($db);

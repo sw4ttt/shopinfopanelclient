@@ -14,6 +14,10 @@ var model = {};
 var pathScript = normalize(__dirname + "/odbcWrapper.php");
 var paramScript = ["C:/a2Softway/Empre001/Data/"];
 
+/*
+    IMPORTANTE:
+        -Los campos del select deben estar presente. No puede ser Select *.
+ */
 model.get = function (query,callback)
 {
     if (!query)
@@ -30,7 +34,19 @@ model.get = function (query,callback)
                     if(stderr)
                         return callbackAsync({err:stderr});
                     else
-                        return callbackAsync(null,JSON.parse(dataSQL));
+                    {
+                        // if(_.isString(dataSQL))
+                        //     return callbackAsync(null,(dataSQL));
+                        // return callbackAsync(null,JSON.parse(dataSQL));
+                        //
+                        try {
+                            return callbackAsync(null,JSON.parse(dataSQL));
+                        } catch (e) {
+                            return callbackAsync(null,(dataSQL));
+                        }
+
+                    }
+
                 });
             }
         ],
