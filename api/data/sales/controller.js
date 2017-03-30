@@ -12,7 +12,6 @@ exports.all = function(req,res) {
 exports.get = function(req,res) {
     if (!req.params)
         res.status(401).send({ msg:'error', error:{key:"MISSING_PARAMS",message:"Missing parameters on request."} });
-    console.log("req.params.query=",req.params.date);
     var query = req.params.date;
     model.get(query,function (err,data) {
         if (err) res.status(401).send({ msg:'error', error:err });

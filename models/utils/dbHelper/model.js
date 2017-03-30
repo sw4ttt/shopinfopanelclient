@@ -5,52 +5,48 @@
 var _ = require('lodash');
 var runner = require("child_process");
 var async = require('async');
-var fs = require('fs');
+var S = require('string');
+var path = require('path');
+var normalize = require('normalize-path');
 
 var model = {};
 
-var rutaScript = __dirname + "/../../../../sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
-// var paramScript = ["userdata"];
+var pathScript = normalize(__dirname + "/odbcWrapper.php");
 var paramScript = ["C:/a2Softway/Empre001/Data/"];
 
-model.checkDb = function (dbPath,callback){
-    if (fs.existsSync(dbPath))
-        return callback(null,true);
-    else return callback(false);
-}
 model.get = function (query,callback)
 {
+    if (!query)
+        return callback({status:400,key:"PARAM_QUERY_MISSING"});
     async.series(
         [
-            function(callback1) {
-                // do some stuff ...
-                // callback1(null,{data:"todo cool1"});
-                paramScript[1]=query.toString();
-                console.log("paramScript=",paramScript)
-                runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + rutaScript + " " +paramScript, function(err, dataSQL, stderr)
+            function(callbackAsync) {
+                paramScript[1] = prepareQuery(query);
+                runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
                 {
                     if(err)
-                        return callback1(err);
+                        return callbackAsync(err);
                     else
                     if(stderr)
-                        return callback1(null,{err:stderr});
+                        return callbackAsync({err:stderr});
                     else
-                        return callback1(null,JSON.parse(dataSQL));
+                        return callbackAsync(null,JSON.parse(dataSQL));
                 });
             }
         ],
-        function(err, results) {
+        function(err, response) {
             if (err)
             {
                 console.log("async.series.err=",err);
                 return callback(err);
             }
-            else
-            {
-                // console.log("async.series.results=",results[0])
-                return callback(null,results[0]);
-            }
+            return callback(null,response[0]);
         });
 };
+
+function prepareQuery(query) {
+    var tmp = S(query).replaceAll(' ', '*').s;
+    return S(tmp).replaceAll(',', '+').s;
+}
 
 module.exports = model;
