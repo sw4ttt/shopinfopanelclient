@@ -17,7 +17,6 @@ else
     $response = odbc_exec($db,$query);
 
     if (!$response){
-        //echo fwrite(STDERR,odbc_error());
         echo json_encode(odbc_error());
     }else {
         $arrayOut = array();

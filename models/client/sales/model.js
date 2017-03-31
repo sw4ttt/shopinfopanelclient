@@ -3,8 +3,6 @@
  */
 "use strict";
 var _ = require('lodash');
-var runner = require("child_process");
-var async = require('async');
 var S = require('string');
 var squel = require('squel');
 var dbHelper = require('./../../utils/dbHelper/model.js')
@@ -12,7 +10,7 @@ var model = {};
 
 var fields = [
     "Nombre",
-    "Descripcion",
+    "DescripcionX",
     "Clave"
 ]
 
@@ -26,13 +24,10 @@ model.get = function (query,callback)
 
     dbHelper.get(test,function (err,response) {
         if (err)
-            callback(err);
+            return callback(err);
         else
-            callback(null,response);
+            return callback(null,response);
     })
-
-    // callback(null,{msg:test})
-
 };
 
 module.exports = model;
