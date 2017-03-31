@@ -21,41 +21,32 @@ var paramScript = ["C:/a2Softway/Empre001/Data/"];
 model.get = function (query,callback)
 {
     if (!query)
-        return callback({status:400,key:"PARAM_QUERY_MISSING"});
+        callback({status:400,key:"PARAM_QUERY_MISSING"});
+    else
     async.series(
         [
             function(callbackAsync) {
                 paramScript[1] = prepareQuery(query);
                 runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
                 {
-                    // if(err)
-                    //     return callbackAsync(err);
-                    console.log("stderr=",stderr)
-                    if(stderr)
-                        return callbackAsync(stderr);
-                    return callbackAsync(null,dataSQL);
-                    // if(err)
-                    //     return callbackAsync(err);
-                    // if(stderr)
-                    //     return callbackAsync({err:stderr});
-                    // return callbackAsync(null,dataSQL);
+                    callbackAsync(null,dataSQL);
                 });
             }
         ],
         function(err, response) {
-            if (err)
-                return callback(JSON.parse(err));
-            return callback(null,JSON.parse(response[0]));
-            // var out = null;
-            // try {
-            //     out = );
-            // }
-            // catch (e) {
-            // }
-            // if (!out)
-            //     return callback(response[0]);
-            // return callback(null,out);
-
+            if (S(response).contains('error'))
+                callback({msg:"algun error sql.",key:"ERROR_SQL"});
+            else
+            {
+                var out = null;
+                try {
+                    out = JSON.parse(response[0]);
+                }
+                catch (e) {
+                    out = response[0];
+                }
+                callback(null,out);
+            }
         });
 };
 

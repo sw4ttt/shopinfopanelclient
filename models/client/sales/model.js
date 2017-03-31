@@ -12,7 +12,7 @@ var model = {};
 
 var fields = [
     "Nombre",
-    "DescripcionX",
+    "Descripcion",
     "Clave"
 ]
 
@@ -26,8 +26,9 @@ model.get = function (query,callback)
 
     dbHelper.get(test,function (err,response) {
         if (err)
-            return callback(err);
-        callback(null,response);
+            callback(err);
+        else
+            callback(null,response);
     })
 
     // callback(null,{msg:test})
