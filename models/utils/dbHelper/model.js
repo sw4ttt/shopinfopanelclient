@@ -27,8 +27,27 @@ model.get = function (query,callback)
     }
     else
     {
-        console.log("else-!query");
-        return callback({msg:"algun error sql.",key:"ERROR_SQL"});
+        paramScript[1] = prepareQuery(query);
+        runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
+        {
+            // return callbackAsync(null,dataSQL);
+
+            if (S(dataSQL).contains('error'))
+                return callback({msg:"algun error sql.",key:"ERROR_SQL"});
+            else
+            {
+                var out = null;
+                try {
+                    out = JSON.parse(dataSQL);
+                }
+                catch (e) {
+                    out = dataSQL;
+                }
+                return callback(null,out);
+            }
+        });
+        // console.log("else-!query");
+        // return callback({msg:"algun error sql.",key:"ERROR_SQL"});
     }
 };
 
