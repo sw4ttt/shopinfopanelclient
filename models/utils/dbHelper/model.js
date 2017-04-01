@@ -22,7 +22,6 @@ model.get = function (query,callback)
 {
     if (!query)
     {
-        console.log("if-!query");
         return callback({status:400,key:"PARAM_QUERY_MISSING"});
     }
     else
@@ -33,7 +32,7 @@ model.get = function (query,callback)
             // return callbackAsync(null,dataSQL);
 
             if (S(dataSQL).contains('error'))
-                return callback({msg:"algun error sql.",key:"ERROR_SQL"});
+                return callback({key:"ERROR_SQL",msg:dataSQL});
             else
             {
                 var out = null;

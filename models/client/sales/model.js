@@ -10,7 +10,7 @@ var model = {};
 
 var fields = [
     "Nombre",
-    "Descripcion",
+    "DescripcionX",
     "Clave"
 ]
 
