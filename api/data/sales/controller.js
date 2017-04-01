@@ -14,7 +14,7 @@ exports.get = function(req,res) {
         res.status(401).send({ msg:'error', error:{key:"MISSING_PARAMS",message:"Missing parameters on request."} });
     var query = req.params.date;
     model.get(query,function (err,data) {
-        if (err) return res.status(401).send({ msg:'error', error:err });
+        if (err) return res.status(401).send({ error:err });
         // res.status(200).send({ msg:'success', data:data});
         // console.log("data=",data)
         // _.forEach(data,function (row) {
