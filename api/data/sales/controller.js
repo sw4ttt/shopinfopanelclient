@@ -3,10 +3,16 @@
  */
 "use strict";
 var _ = require('lodash');
-var model = require('./../../../models/client/sales/model.js')
+var model = require('./../../../models/data/sales/model')
 
 exports.all = function(req,res) {
     res.status(200).json({ msg: 'DATA - SALES CONTROLLER - ALL' });
+};
+exports.getToday = function(req,res) {
+    model.getToday(function (err,data) {
+        if (err) return res.status(401).send({ error:err });
+        return res.status(200).send({ msg:'success', data:data});
+    });
 };
 
 exports.get = function(req,res) {

@@ -19,7 +19,7 @@ model.get = function (query,callback)
     var test = squel.select()
         .fields(fields)
         .from("Susuarios")
-        .where("Nombre='CAJA1'")
+        .where("Nombre='CAJA1X'")
         .toString();
 
     dbHelper.get(test,function (err,response) {

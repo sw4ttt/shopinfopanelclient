@@ -9,7 +9,9 @@ var controller = require('./controller.js');
 
 
 router.get('/', controller.all);
+router.get('/date/today', controller.getToday);
 router.get('/date/:date', controller.get);
+
 
 
 module.exports = router;
