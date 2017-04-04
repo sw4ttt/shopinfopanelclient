@@ -70,9 +70,20 @@ model.getToday = function (callback)
 model.get = function (query,callback)
 {
     var test = squel.select()
-        .fields(fields)
-        .from("SOperacionInv")
-        .where("FTI_DOCUMENTO='00049139'")
+        .fields([
+            "SOperacionInv.FTI_DOCUMENTO",
+            "SOperacionInv.FTI_FECHAEMISION",
+            "SOperacionInv.FTI_DOCUMENTOORIGEN",
+            "SOperacionInv.FTI_TOTALNETO",
+            "SDetalleVenta.FDI_CODIGO",
+            "SDetalleVenta.FDI_TIPOOPERACION",
+            "SDetalleVenta.FDI_DOCUMENTO",
+            "SDetalleVenta.FDI_DOCUMENTOORIGEN",
+            "SDetalleVenta.FDI_PRECIODEVENTA",
+            "SDetalleVenta.FDI_FECHAOPERACION"
+        ])
+        .from("SOperacionInv LEFT OUTER JOIN SDetalleVenta ON SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO")
+        .where("FTI_FECHAEMISION = ?", moment('2017-04-02').format("YYYY-MM-DD"))
         .toString();
 
     dbHelper.get(test,function (err,response) {
@@ -96,21 +107,25 @@ model.getDocsToday = function (callback)
             return callback(err);
         var out = [];
         _.forEach(response,function (document) {
-            var auxDoc = document;
-            auxDoc.FTI_FECHAEMISION = moment(document.FTI_FECHAEMISION).format("YYYY-MM-DD");
-            auxDoc.FTI_DOCUMENTOORIGEN = _.trimEnd(document.FTI_DOCUMENTOORIGEN, '/');
+            // var auxDoc = document;
+            document.FTI_FECHAEMISION = moment(document.FTI_FECHAEMISION).format("YYYY-MM-DD");
+            document.FTI_DOCUMENTOORIGEN = _.trimEnd(document.FTI_DOCUMENTOORIGEN, '/');
 
-            auxDoc.items = [];
+            // document.items = [];
             functions.getDetails(document,function(err,items){
                 if (err)
                     return callback(err);
 
                 console.log("document.FTI_DOCUMENTO=",document.FTI_DOCUMENTO)
-                console.log("document.items=",items)
+                // console.log("document.items=",items)
 
-                auxDoc.items = _.clone(items);
+                document.items = items;
+
+                console.log("auxDoc.items=",document.items)
+
+                console.log("out=",out)
             })
-            out.push(auxDoc);
+            out.push(document);
         })
         return callback(null,out);
     })

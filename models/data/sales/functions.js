@@ -26,20 +26,16 @@ functions.getDetails = function (doc,callback)
 {
     if (!doc)
         return callback({key:"PARAM_DOC_MISSING",msg:"Doc param error"})
-
     var queryDetails = squel.select()
         .fields(fieldsDetails)
         .from("SDetalleVenta")
         .where("FDI_DOCUMENTO = ?", doc.FTI_DOCUMENTO)
         .where("FDI_FECHAOPERACION = ?", doc.FTI_FECHAEMISION)
         .toString();
-
-    var items = [];
     dbHelper.get(queryDetails,function (err,response) {
         if (err)
             return callback(err);
-        items = response;
-        return callback(null,items);
+        return callback(null,response);
     })
 };
 
