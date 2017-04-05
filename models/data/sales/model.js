@@ -90,7 +90,25 @@ model.get = function (query,callback)
         if (err)
             return callback(err);
         else
-            return callback(null,response);
+        {
+            // console.log("response=",response)
+            var aux = _.groupBy(response,"FTI_DOCUMENTO");
+            var out = [];
+            _.forEach(aux,function(docVal,docId){
+                console.log("docId=",docId,"-docVal=",docVal)
+                _.forEach(docVal,function (docItem) {
+                    docItem.FTI_FECHAEMISION = moment(docItem.FTI_FECHAEMISION).format("YYYY-MM-DD");
+                    docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/');
+                })
+                var item = {
+                    id:docId,
+                    data:docVal
+                }
+                out.push(item);
+            })
+            return callback(null,out);
+        }
+
     })
 };
 
