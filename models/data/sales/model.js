@@ -17,11 +17,15 @@ var fields = [
     "FTI_PERSONACONTACTO",
     "FTI_FECHAEMISION",
     "FTI_DOCUMENTOORIGEN",
-    "FTI_TOTALNETO"
+    "FTI_TOTALITEMS",
+    "FTI_TOTALBRUTO",
+    "FTI_TOTALNETO",
+    "FTI_IMPUESTO1MONTO"
 ];
 
 var fieldsDetails = [
     "FDI_CODIGO", // Codigo Articulo
+    "FDI_CANTIDAD",
     "FDI_TIPOOPERACION", // Tipo de doc. 11 Fact, 12 Dev
     "FDI_DOCUMENTO", // N.Factura
     "FDI_DOCUMENTOORIGEN", // N.Factura Cuando es DEV. Vacio en caso contrario
@@ -29,61 +33,46 @@ var fieldsDetails = [
     "FDI_FECHAOPERACION"
 ];
 
-model.getToday = function (callback)
+/*
+ moment().startOf('month').format("YYYY-MM-DD");
+ moment().endOf("year").format("YYYY-MM-DD");
+ */
+model.get = function (query,callback)
 {
-    var test = squel.select()
-        .fields(fields)
-        .from("SOperacionInv")
-        //---------------------------- COLOCA LA FECHA DE HOY!!!!
-        .where("FTI_FECHAEMISION = ?", moment('2017-04-02').format("YYYY-MM-DD"))
+    var query =
+        squel.select()
+        .fields([
+            "FI_CODIGO",
+            "FI_DESCRIPCION",
+            "FDI_CODIGO",
+            "FDI_PRECIODEVENTA",
+            "FDI_FECHAOPERACION"
+        ])
+        .from("SDetalleVenta")
+        .left_join("Sinventario", null, "Sinventario.FI_CODIGO = SDetalleVenta.FDI_CODIGO")
+        .where("FDI_FECHAOPERACION = ?", moment().format("YYYY-MM-DD"))
         .toString();
 
-    dbHelper.get(test,function (err,response) {
+    dbHelper.get(query,function (err,response) {
         if (err)
             return callback(err);
-        var sale = 0.00;
-        var dev = 0.00;
-        console.log("response=",response)
-        _.forEach(response,function (document) {
-            console.log("document=",document)
-            if (document.FTI_TIPO == "11")
-            {
-                console.log("sale=",sale);
-                console.log("document.FTI_TOTALNETO=",document.FTI_TOTALNETO);
-                console.log("document.FTI_TOTALNETO(finite)=",_.toFinite(document.FTI_TOTALNETO));
-                sale = sale + _.toFinite(document.FTI_TOTALNETO);
-            }
-            else
-                if (document.FTI_TIPO == "12")
-                {
-                    console.log("dev=",dev);
-                    console.log("document.FTI_TOTALNETO=",document.FTI_TOTALNETO);
-                    console.log("document.FTI_TOTALNETO(finite)=",_.toFinite(document.FTI_TOTALNETO));
-                    dev = dev + _.toFinite(document.FTI_TOTALNETO);
-                }
-
-        })
-        return callback(null,{sale:sale.toFixed(2),dev:dev.toFixed(2),total:(sale-dev).toFixed(2)});
+        else
+        {
+            return callback(null,response);
+        }
     })
 };
 
-model.get = function (query,callback)
+model.getDocsToday = function (callback)
 {
-    var test = squel.select()
-        .fields([
-            "SOperacionInv.FTI_DOCUMENTO",
-            "SOperacionInv.FTI_FECHAEMISION",
-            "SOperacionInv.FTI_DOCUMENTOORIGEN",
-            "SOperacionInv.FTI_TOTALNETO",
-            "SDetalleVenta.FDI_CODIGO",
-            "SDetalleVenta.FDI_TIPOOPERACION",
-            "SDetalleVenta.FDI_DOCUMENTO",
-            "SDetalleVenta.FDI_DOCUMENTOORIGEN",
-            "SDetalleVenta.FDI_PRECIODEVENTA",
-            "SDetalleVenta.FDI_FECHAOPERACION"
-        ])
-        .from("SOperacionInv LEFT OUTER JOIN SDetalleVenta ON SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO")
-        .where("FTI_FECHAEMISION = ?", moment('2017-04-02').format("YYYY-MM-DD"))
+    var queryFields = _.union(fields,fieldsDetails);
+    var test =
+        squel.select()
+        .fields(queryFields)
+        .from("SOperacionInv")
+        .join("SDetalleVenta", null, "SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO")
+        .where("FTI_FECHAEMISION = ?", moment().format("YYYY-MM-DD"))
+        .where("FDI_FECHAOPERACION = ?", moment().format("YYYY-MM-DD"))
         .toString();
 
     dbHelper.get(test,function (err,response) {
@@ -91,62 +80,108 @@ model.get = function (query,callback)
             return callback(err);
         else
         {
-            // console.log("response=",response)
-            var aux = _.groupBy(response,"FTI_DOCUMENTO");
-            var out = [];
-            _.forEach(aux,function(docVal,docId){
-                console.log("docId=",docId,"-docVal=",docVal)
+            var docsList = [];
+            _.forEach(_.groupBy(response,"FTI_DOCUMENTO"),function(docVal){
+                var docHeader = {}
                 _.forEach(docVal,function (docItem) {
                     docItem.FTI_FECHAEMISION = moment(docItem.FTI_FECHAEMISION).format("YYYY-MM-DD");
                     docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/');
-                })
-                var item = {
-                    id:docId,
-                    data:docVal
-                }
-                out.push(item);
-            })
-            return callback(null,out);
-        }
 
+                    _.forEach(fields,function (field) {
+                        docHeader[field] = docItem[field];
+                        delete docItem[field];
+                    })
+
+                })
+                var doc = {
+                    doc:docHeader,
+                    items:docVal
+                }
+                docsList.push(doc);
+            })
+            return callback(null,docsList);
+        }
     })
 };
 
-model.getDocsToday = function (callback)
+model.getDocsDate = function (date,callback)
 {
-    var query = squel.select()
-        .fields(fields)
-        .from("SOperacionInv")
-        .where("FTI_FECHAEMISION = ?", moment('2017-04-02').format("YYYY-MM-DD"))
-        .toString();
+    console.log("start month=",moment().startOf('month').format("YYYY-MM-DD"))
+    console.log("end month=",moment().endOf('month').format("YYYY-MM-DD"))
 
-    dbHelper.get(query,function (err,response) {
+    // moment().startOf('month').format("YYYY-MM-DD");
+    // moment().endOf('month').format("YYYY-MM-DD");
+    // moment().add(7, 'days');
+    // moment(XXX).isSameOrBefore('2010-10-21');
+    if (!moment(date).isValid())
+        return callback({key:"INVALID_DATE",msg:"The param date is invalid"})
+
+    var queryFields = _.union(fields,fieldsDetails);
+    var test =
+        squel.select()
+            .fields(queryFields)
+            .from("SOperacionInv")
+            .join("SDetalleVenta", null, "SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO")
+            .where("FTI_FECHAEMISION = ?", moment(date).format("YYYY-MM-DD"))
+            .where("FDI_FECHAOPERACION = ?", moment(date).format("YYYY-MM-DD"))
+            .toString();
+
+    dbHelper.get(test,function (err,response) {
         if (err)
             return callback(err);
-        var out = [];
-        _.forEach(response,function (document) {
-            // var auxDoc = document;
-            document.FTI_FECHAEMISION = moment(document.FTI_FECHAEMISION).format("YYYY-MM-DD");
-            document.FTI_DOCUMENTOORIGEN = _.trimEnd(document.FTI_DOCUMENTOORIGEN, '/');
+        else
+        {
+            var docsList = [];
+            _.forEach(_.groupBy(response,"FTI_DOCUMENTO"),function(docVal){
+                var docHeader = {}
+                _.forEach(docVal,function (docItem) {
+                    docItem.FTI_FECHAEMISION = moment(docItem.FTI_FECHAEMISION).format("YYYY-MM-DD");
+                    docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/');
 
-            // document.items = [];
-            functions.getDetails(document,function(err,items){
-                if (err)
-                    return callback(err);
+                    _.forEach(fields,function (field) {
+                        docHeader[field] = docItem[field];
+                        delete docItem[field];
+                    })
 
-                console.log("document.FTI_DOCUMENTO=",document.FTI_DOCUMENTO)
-                // console.log("document.items=",items)
-
-                document.items = items;
-
-                console.log("auxDoc.items=",document.items)
-
-                console.log("out=",out)
+                })
+                var doc = {
+                    doc:docHeader,
+                    items:docVal
+                }
+                docsList.push(doc);
             })
-            out.push(document);
-        })
-        return callback(null,out);
+            return callback(null,docsList);
+        }
     })
 };
 
 module.exports = model;
+
+/*
+ .join(
+ squel.select().fields(["FI_CODIGO","FI_DESCRIPCION"]).from('Sinventario')
+ )
+ .fields(queryFields)
+ .from("SOperacionInv JOIN SDetalleVenta ON (SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO) ")
+ .where("FTI_FECHAEMISION = ?", moment().format("YYYY-MM-DD"))
+ .where("FDI_FECHAOPERACION = ?", moment().format("YYYY-MM-DD"))
+ .toString();
+
+ JOIN Sinventario ON (Sinventario.FI_CODIGO = SDetalleVenta.FDI_CODIGO)
+ .join(
+ squel.select().field('score').from('results'),
+ 't'
+ )
+ .join("teachers", null, "students.id = teachers.student_id")
+
+
+ var test = squel.select()
+ .fields(queryFields)
+ .from("SOperacionInv")
+ .join("SDetalleVenta", null, "SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO")
+ .join("Sinventario", null, "Sinventario.FI_CODIGO = SDetalleVenta.FDI_CODIGO")
+ .where("FTI_FECHAEMISION = ?", moment().format("YYYY-MM-DD"))
+ .where("FDI_FECHAOPERACION = ?", moment().format("YYYY-MM-DD"))
+ .where("FI_CODIGO = FDI_CODIGO")
+ .toString();
+ */

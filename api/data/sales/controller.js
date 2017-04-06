@@ -9,19 +9,23 @@ var moment = require('moment');
 exports.all = function(req,res) {
     res.status(200).json({ msg: 'DATA - SALES CONTROLLER - ALL' });
 };
-exports.getToday = function(req,res) {
-    model.getToday(function (err,data) {
-        if (err) return res.status(401).send({ error:err });
-        return res.status(200).send({ msg:'success', data:data});
-    });
-};
 
 exports.getDocsToday = function(req,res) {
     model.getDocsToday(function (err,data) {
         if (err) return res.status(401).send({ error:err });
-        return res.status(200).send({ msg:'success', data:data});
+        return res.status(200).send({ success:true, data:data});
     });
 };
+
+exports.getDocsDate= function(req,res) {
+    if (!req.params)
+        res.status(401).send({ msg:'error', error:{key:"MISSING_PARAMS",message:"Missing parameters on request."} });
+    model.getDocsDate(req.params.date,function (err,data) {
+        if (err) return res.status(401).send({ error:err });
+        return res.status(200).send({ success:true, data:data});
+    });
+};
+
 
 exports.get = function(req,res) {
     if (!req.params)
@@ -34,7 +38,7 @@ exports.get = function(req,res) {
         // _.forEach(data,function (row) {
         //     console.log("row=",row);
         // })
-        return res.status(200).send({ msg:'success', data:data});
+        return res.status(200).send({ success:true, data:data});
     })
 
     // if (req.params.date)
