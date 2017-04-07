@@ -10,46 +10,6 @@ var databaseHelper = require("./sw4ttt_modules/dbHelper/model.js");
 //var confighelper = new confighelper();
 io = require('socket.io').listen(http);
 
-// config.resetConfig(function (err,response) {
-//     if (err)
-//         console.log(err);
-//     console.log("response=",response);
-// })
-
-// var queryTest = "";
-// var data = ['data1','data2','data3','data4'];
-// // _.forEach(data, function(value) {
-// //     queryTest = queryTest + value + ',';
-// // });
-// var qt = "";
-// for (var i = 0; i < data.length; i++) {
-//     qt = qt +"?,";
-// }
-// qt = S(qt).chompRight(',').s;
-// var query = "INSERT INTO "+_.toUpper("tabla")+" VALUES ("+qt+")";
-// console.log("queryTest=<"+query+">");
-// console.log("EXIST- configuration=");
-// databaseHelper.getData("configuration",function (err,response) {
-//         if (err) console.log("ERR en existTable =",err);
-//         if (response)
-//         {
-//             console.log(response);
-//         }
-//         else
-//             console.log("NOT response");
-//
-//     })
-// databaseHelper.existTable("users",function (err,response) {
-//     if (err) console.log("ERR en existTable =",err);
-//     if (response)
-//         console.log("FOUND");
-//     else
-//         console.log("NOT FOUND");
-//
-// })
-//config.initConfig();
-//confighelper.test();
-
 app.use(express.static(__dirname + '/public'));
 // create application/json parser
 //var jsonParser = bodyParser.json()

@@ -7,7 +7,7 @@ var S = require('string');
 var squel = require('squel');
 var dbHelper = require('./../../utils/dbHelper/model.js')
 var moment = require('moment');
-var functions = require('./functions');
+// var functions = require('./functions');
 var model = {};
 // FTI_TIPO: 11 Factura, 12 Dev
 var fields = [

@@ -13,7 +13,7 @@ router.use(function timeLog (req, res, next) {
 // define the home page route
 router.get('/', function (req, res) 
 {
-  res.sendFile('index.html', {root: './views'});
+  res.sendFile('dashaboard.html', {root: './views/dashaboard'});
 });
 
 router.use('/api/data', require('./data'));
