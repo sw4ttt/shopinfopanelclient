@@ -106,9 +106,6 @@ model.getDocsToday = function (callback)
 
 model.getDocsDate = function (date,callback)
 {
-    console.log("start month=",moment().startOf('month').format("YYYY-MM-DD"))
-    console.log("end month=",moment().endOf('month').format("YYYY-MM-DD"))
-
     // moment().startOf('month').format("YYYY-MM-DD");
     // moment().endOf('month').format("YYYY-MM-DD");
     // moment().add(7, 'days');
