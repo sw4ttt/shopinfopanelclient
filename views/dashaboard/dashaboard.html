@@ -2,7 +2,7 @@
 <html>
   <head>
       <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
-      <title>Config Panel</title>
+      <title>Dashboard</title>
   </head>
   <body>
         <div class="row main">
@@ -13,20 +13,27 @@
                     </div>
                     <div id="panel-body" class="panel-body">
                         <form class="form-horizontal">
-                           <div class="form-group">
-                                <label  class="col-sm-3 col-md-3 control-label"><h4><strong>Fecha:</strong></h4></label>
-                                <div class="col-sm-7 col-md-7">
-                                    <!--<input id="selectorfecha" class="form-control editable" name="selectorfecha" placeholder="ejemplo: AAAA-MM-DD">-->
-                                    <div id="selectorfecha"></div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label  class="col-sm-2 col-md-2 control-label"><h4><strong>Fecha:</strong></h4></label>
+                                    <div class="col-sm-5 col-md-5">
+                                        <!--<input id="selectorfecha" class="form-control editable" name="selectorfecha" placeholder="ejemplo: AAAA-MM-DD">-->
+                                        <div id="selectorfecha"></div>
+                                    </div>
+                                    <div class="col-sm-5 col-md-5">
+                                        <!--<input id="selectorfecha" class="form-control editable" name="selectorfecha" placeholder="ejemplo: AAAA-MM-DD">-->
+                                        <label  class="control-label"><h4><strong>Fecha:</strong></h4></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
+                                        <button id="consultar" class="btn btn-primary editable">
+                                            <span class="glyphicon glyphicon-search"></span> Consultar
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
-                                    <button id="consultar" class="btn btn-primary editable">
-                                        <span class="glyphicon glyphicon-search"></span> Consultar
-                                    </button>
-                                </div>
-                            </div>
+
                             <!--<div class="form-group">-->
 
                                 <!--<div id="facturasList" class="col-sm-6 col-md-6" style="text-align: center"> <h3><strong>Facturas</strong></h3>-->
@@ -58,7 +65,7 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="/javascript/lodash.js"></script>
-  <script src="/javascript/moment.js"></script>
+    <script src="/javascript/moment.js"></script>
     <script src="/javascript/jquery-ui.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
@@ -181,13 +188,8 @@
                     $( "#panel-body" ).append( "<div class='errorQuery alert alert-info'><strong></strong>No existen Facturas para la fecha indicada.</div>" );
                 }
                 _.forEach(response.data,function (value) {
-//                        <label for="nombreserver" class="control-label">value.doc.FTI_DOCUMENTO</label>
                     if (value.doc.FTI_TIPO == "11")
                     {
-//                        <button class='btn btn-primary editable'>
-//                        <span class='glyphicon glyphicon-eye-open'></span> Consultar
-//                          </button>
-//                        <button class='btn btn-primary editable'><span class='glyphicon glyphicon-eye-open'></span></button>
                         $( "#facturasList" ).append( "<li style='text-align: center' class='facturaItem list-group-item'><button class='btn btn-primary btn-sm editable'><span class='glyphicon glyphicon-eye-open'></span></button> " +
                             "N°"+value.doc.FTI_DOCUMENTO+"</li>" );
                     }
