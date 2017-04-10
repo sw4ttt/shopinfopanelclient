@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+  <head>
+      <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+      <link rel="stylesheet" type="text/css" href="stylesheets/sidebar.css">
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+      <title>Dashboard</title>
+  </head>
+  <body>
+      <div class="nav-side-menu row col-sm-2 col-md-2">
+          <div class="brand">Brand Logo</div>
+          <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+          <div class="menu-list">
+
+              <ul id="menu-content" class="menu-content collapse out">
+                  <li>
+                      <a href="#">
+                          <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                      </a>
+                  </li>
+
+                  <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                      <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
+                  </li>
+                  <ul class="sub-menu collapse" id="products">
+                      <li class="active"><a href="#">CSS3 Animation</a></li>
+                      <li><a href="#">General</a></li>
+                      <li><a href="#">Buttons</a></li>
+                      <li><a href="#">Tabs & Accordions</a></li>
+                      <li><a href="#">Typography</a></li>
+                      <li><a href="#">FontAwesome</a></li>
+                      <li><a href="#">Slider</a></li>
+                      <li><a href="#">Panels</a></li>
+                      <li><a href="#">Widgets</a></li>
+                      <li><a href="#">Bootstrap Model</a></li>
+                  </ul>
+
+
+                  <li data-toggle="collapse" data-target="#service" class="collapsed">
+                      <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
+                  </li>
+                  <ul class="sub-menu collapse" id="service">
+                      <li>New Service 1</li>
+                      <li>New Service 2</li>
+                      <li>New Service 3</li>
+                  </ul>
+
+
+                  <li data-toggle="collapse" data-target="#new" class="collapsed">
+                      <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+                  </li>
+                  <ul class="sub-menu collapse" id="new">
+                      <li>New New 1</li>
+                      <li>New New 2</li>
+                      <li>New New 3</li>
+                  </ul>
+
+
+                  <li>
+                      <a href="#">
+                          <i class="fa fa-user fa-lg"></i> Profile
+                      </a>
+                  </li>
+
+                  <li>
+                      <a href="#">
+                          <i class="fa fa-users fa-lg"></i> Users
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="main row">
+          <div class="col-sm-10 col-md-10">
+              <div class="panel panel-default">
+                  <div class="panel-heading clearfix">
+                      <h4 class="panel-title pull-left" style="padding-top: 7.5px;"><strong> Consulta de Documentos </strong></h4>
+                  </div>
+                  <div id="panel-body" class="panel-body">
+                      <form class="form-horizontal">
+                          <div class="row">
+                              <div class="form-group">
+                                  <label  class="col-sm-2 col-md-2 control-label"><h4><strong>Fecha:</strong></h4></label>
+                                  <div class="col-sm-5 col-md-5">
+                                      <!--<input id="selectorfecha" class="form-control editable" name="selectorfecha" placeholder="ejemplo: AAAA-MM-DD">-->
+                                      <div id="selectorfecha"></div>
+                                  </div>
+                                  <div class="col-sm-5 col-md-5">
+                                      <!--<input id="selectorfecha" class="form-control editable" name="selectorfecha" placeholder="ejemplo: AAAA-MM-DD">-->
+                                      <label  class="control-label"><h4><strong>Fecha:</strong></h4></label>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
+                                      <button id="consultar" class="btn btn-primary editable">
+                                          <span class="glyphicon glyphicon-search"></span> Consultar
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!--<div class="form-group">-->
+
+                          <!--<div id="facturasList" class="col-sm-6 col-md-6" style="text-align: center"> <h3><strong>Facturas</strong></h3>-->
+                          <!--&lt;!&ndash;<label for="nombreserver" class="control-label">Selector de Fecha:</label>&ndash;&gt;-->
+                          <!--</div>-->
+                          <!--<div id="devolicionesList" class="col-sm-6 col-md-6" style="text-align: center"> <h3><strong>Devoluciones</strong></h3>-->
+                          <!--&lt;!&ndash;<label for="nombreserver" class="control-label">Selector de Fecha:</label>&ndash;&gt;-->
+                          <!--</div>-->
+                          <!--</div>-->
+                      </form>
+                      <div class="row">
+                          <ul id="facturasList" class="list-group col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-5">
+                              <li class="list-group-item active"><h4><strong>Facturas</strong></h4></li>
+                          </ul>
+                          <ul id="devolucionesList" class="list-group col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-5">
+                              <li class="list-group-item active"><h4><strong>Devoluciones</strong></h4></li>
+                          </ul>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </body>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/jquery-ui.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/javascript/lodash.js"></script>
+    <script src="/javascript/moment.js"></script>
+    <script src="/javascript/jquery-ui.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        //$("#urlserver").LoadingOverlay("show");
+        /*
+        if ( $( "#urlserver" ).prop( "disabled" ) )
+        {
+            console.log('esta disabled');
+        }
+        */
+        var socket = io();
+        socket.on('connect', function()
+        {
+            console.log('connect');
+            //$( ".pereto" ).prop( "disabled", false );
+            //$.LoadingOverlay("hide");
+
+            socket.on('disconnect', function()
+            {
+                //$.LoadingOverlay("show");
+                console.log('disconnect');
+                //$( ".pereto" ).prop( "disabled", true );
+            });
+        });
+
+    </script>
+    <script>
+        $( document ).ready(function()
+        {
+            $( "#selectorfecha" ).datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            /*
+                Data de configuracion
+                    ID_TIENDA -> local
+                    NOMBRE_TIENDA -> local
+                    RUTA_A2 -> local
+                    CODIGO_SEGURIDAD -> servidor
+                    NOMBRE_SERVER -> servidor
+                    SERVER_URL -> servidor
+            */
+//            $("#nombreserver").LoadingOverlay("show");
+//            $("#urlserver").LoadingOverlay("show");
+//            $("#nombretienda").LoadingOverlay("show");
+//            $("#codigo").LoadingOverlay("show");
+//            $("#rutabd").LoadingOverlay("show");
+
+//            $.get("/config/getconfig", function(data, status)
+//            {
+//
+//                if (data)
+//                {
+//                    //console.log(data.NOMBRE_SERVER);
+//                    $("#nombreserver").val(data.NOMBRE_SERVER);
+//                    $("#urlserver").val(data.SERVER_URL);
+//
+//                    $("#nombretienda").val(data.NOMBRE_TIENDA);
+//                    $("#codigo").val(data.CODIGO_SEGURIDAD);
+//                    $("#rutabd").val(data.RUTA_A2);
+//
+//                    $("#nombreserver").LoadingOverlay("hide");
+//                    $("#urlserver").LoadingOverlay("hide");
+//                    $("#nombretienda").LoadingOverlay("hide");
+//                    $("#codigo").LoadingOverlay("hide");
+//                    $("#rutabd").LoadingOverlay("hide");
+//                    console.log(data.msg);
+//                }
+//                else
+//                {
+//                    $(".editable").LoadingOverlay("hide");
+//                    $( ".panel-body" ).append( "<div id='error-config' class='alert alert-danger'><strong>Error!</strong> Debes ingresar la configuracion!</div>" );
+//                    //alert alert-success
+//                    /*
+//                        <div class="alert alert-danger">
+//                            <strong>Error!</strong> Debes ingresar la configuracion!
+//                        </div>
+//                    */
+//                }
+//                     //console.log(data.error);
+//                 //$.LoadingOverlay("hide");
+//
+//            });
+        });
+    </script>
+</html>
