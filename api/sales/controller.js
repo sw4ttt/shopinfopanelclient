@@ -41,24 +41,3 @@ exports.getDocsRange= function(req,res) {
     });
 };
 
-
-exports.get = function(req,res) {
-    if (!req.params)
-        res.status(401).send({ msg:'error', error:{key:"MISSING_PARAMS",message:"Missing parameters on request."} });
-    var query = req.params.date;
-    model.get(query,function (err,data) {
-        if (err) return res.status(409).send({ error:err });
-        // res.status(200).send({ msg:'success', data:data});
-        // console.log("data=",data)
-        // _.forEach(data,function (row) {
-        //     console.log("row=",row);
-        // })
-        return res.status(200).send({ success:true, data:data});
-    })
-
-    // if (req.params.date)
-    //     console.log("req.params.date=",req.params.date);
-    // else
-    //     console.log("req.params.date= NO PARAM DATE");
-    // res.status(200).json({ msg: 'DATA - SALES CONTROLLER - READ' });
-};

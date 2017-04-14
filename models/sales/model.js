@@ -37,31 +37,7 @@ var fieldsDetails = [
  moment().startOf('month').format("YYYY-MM-DD");
  moment().endOf("year").format("YYYY-MM-DD");
  */
-model.get = function (query,callback)
-{
-    var query =
-        squel.select()
-        .fields([
-            "FI_CODIGO",
-            "FI_DESCRIPCION",
-            "FDI_CODIGO",
-            "FDI_PRECIODEVENTA",
-            "FDI_FECHAOPERACION"
-        ])
-        .from("SDetalleVenta")
-        .left_join("Sinventario", null, "Sinventario.FI_CODIGO = SDetalleVenta.FDI_CODIGO")
-        .where("FDI_FECHAOPERACION = ?", moment().format("YYYY-MM-DD"))
-        .toString();
 
-    dbHelper.get(query,function (err,response) {
-        if (err)
-            return callback(err);
-        else
-        {
-            return callback(null,response);
-        }
-    })
-};
 
 model.getDocsToday = function (callback)
 {
@@ -178,32 +154,3 @@ model.getDocsRange = function (params,callback)
 };
 
 module.exports = model;
-
-/*
- .join(
- squel.select().fields(["FI_CODIGO","FI_DESCRIPCION"]).from('Sinventario')
- )
- .fields(queryFields)
- .from("SOperacionInv JOIN SDetalleVenta ON (SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO) ")
- .where("FTI_FECHAEMISION = ?", moment().format("YYYY-MM-DD"))
- .where("FDI_FECHAOPERACION = ?", moment().format("YYYY-MM-DD"))
- .toString();
-
- JOIN Sinventario ON (Sinventario.FI_CODIGO = SDetalleVenta.FDI_CODIGO)
- .join(
- squel.select().field('score').from('results'),
- 't'
- )
- .join("teachers", null, "students.id = teachers.student_id")
-
-
- var test = squel.select()
- .fields(queryFields)
- .from("SOperacionInv")
- .join("SDetalleVenta", null, "SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO")
- .join("Sinventario", null, "Sinventario.FI_CODIGO = SDetalleVenta.FDI_CODIGO")
- .where("FTI_FECHAEMISION = ?", moment().format("YYYY-MM-DD"))
- .where("FDI_FECHAOPERACION = ?", moment().format("YYYY-MM-DD"))
- .where("FI_CODIGO = FDI_CODIGO")
- .toString();
- */
