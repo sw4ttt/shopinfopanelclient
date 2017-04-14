@@ -11,6 +11,7 @@ var controller = require('./controller.js');
 router.get('/', controller.all);
 router.get('/docs/today', controller.getDocsToday);
 router.get('/docs/date/:date', controller.getDocsDate);
+router.get('/docs/date/start/:start/end/:end', controller.getDocsRange);
 router.get('/date/test', controller.get);
 
 

@@ -5,7 +5,7 @@
 var _ = require('lodash');
 var S = require('string');
 var squel = require('squel');
-var dbHelper = require('./../../utils/dbHelper/model.js')
+var dbHelper = require('./../utils/dbHelper/model.js')
 var moment = require('moment');
 // var functions = require('./functions');
 var model = {};
@@ -148,6 +148,31 @@ model.getDocsDate = function (date,callback)
                 docsList.push(doc);
             })
             return callback(null,docsList);
+        }
+    })
+};
+
+model.getDocsRange = function (params,callback)
+{
+    console.log("params=",params)
+
+    var query =
+        squel.select()
+            .fields(fields)
+            .from("SOperacionInv")
+            .where("FTI_FECHAEMISION between ? AND ?",params.start,params.end)
+            .toString();
+    console.log("query=",query)
+    dbHelper.get(query,function (err,response) {
+        if (err)
+            return callback(err);
+        else
+        {
+            _.forEach(response,function(doc){
+                doc.FTI_FECHAEMISION = moment(doc.FTI_FECHAEMISION).format("YYYY-MM-DD");
+                doc.FTI_DOCUMENTOORIGEN = _.trimEnd(doc.FTI_DOCUMENTOORIGEN, '/');
+            })
+            return callback(null,response);
         }
     })
 };
