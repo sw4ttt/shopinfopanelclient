@@ -5,7 +5,7 @@
 var _ = require('lodash');
 var S = require('string');
 var squel = require('squel');
-var dbHelper = require('./../utils/dbHelper/model.js')
+var a2DbHelper = require('./../utils/a2DbHelper/model')
 var moment = require('moment');
 // var functions = require('./functions');
 var model = {};
@@ -51,7 +51,7 @@ model.getDocsToday = function (callback)
         .where("FDI_FECHAOPERACION = ?", moment().format("YYYY-MM-DD"))
         .toString();
 
-    dbHelper.get(test,function (err,response) {
+    a2DbHelper.get(test,function (err,response) {
         if (err)
             return callback(err);
         else
@@ -99,7 +99,7 @@ model.getDocsDate = function (date,callback)
             .where("FDI_FECHAOPERACION = ?", moment(date).format("YYYY-MM-DD"))
             .toString();
 
-    dbHelper.get(test,function (err,response) {
+    a2DbHelper.get(test,function (err,response) {
         if (err)
             return callback(err);
         else
@@ -139,7 +139,7 @@ model.getDocsRange = function (params,callback)
             .where("FTI_FECHAEMISION between ? AND ?",params.start,params.end)
             .toString();
     console.log("query=",query)
-    dbHelper.get(query,function (err,response) {
+    a2DbHelper.get(query,function (err,response) {
         if (err)
             return callback(err);
         else

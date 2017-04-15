@@ -3,56 +3,47 @@
  */
 "use strict";
 var _ = require('lodash');
-var runner = require("child_process");
-var async = require('async');
 var S = require('string');
-var path = require('path');
-var normalize = require('normalize-path');
+var moment = require('moment');
+var Datastore = require('nedb');
+var db = new Datastore({ filename: 'test.db',autoload: true,timestampData: true });
 
 var model = {};
 
-var pathScript = normalize(__dirname + "/odbcWrapper.php");
-var paramScript = ["C:/a2Softway/Empre001/Data/"];
 
-/*
-    IMPORTANTE:
-        -Los campos del select deben estar presente. No puede ser Select *.
- */
-model.get = function (query,callback)
+
+
+model.test = function (callback)
 {
-    if (!query)
-    {
-        return callback({status:400,key:"PARAM_QUERY_MISSING"});
-    }
-    else
-    {
-        paramScript[1] = prepareQuery(query);
-        runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
-        {
-            // return callbackAsync(null,dataSQL);
+    var doc = { hello: 'world'
+        , n: 5
+        , today: new Date()
+        , nedbIsAwesome: true
+        , notthere: null
+        , notToBeSaved: undefined  // Will not be saved
+        , fruits: [ 'apple', 'orange', 'pear' ]
+        , infos: { name: 'nedb' }
+    };
+    var a = new Date();
 
-            if (S(dataSQL).contains('error'))
-                return callback({key:"ERROR_SQL",msg:dataSQL});
-            else
-            {
-                var out = null;
-                try {
-                    out = JSON.parse(dataSQL);
-                }
-                catch (e) {
-                    out = dataSQL;
-                }
-                return callback(null,out);
-            }
-        });
-        // console.log("else-!query");
-        // return callback({msg:"algun error sql.",key:"ERROR_SQL"});
-    }
+    db.insert(doc, function (err, newDoc) {   // Callback is optional
+        if (err)
+            return callback(err)
+
+        var mydate = new Date(newDoc.createdAt);
+        var str = mydate.toISOString();
+
+        console.log("dateini=",newDoc.createdAt)
+        console.log("date1-S=",moment().format("YYYY-MM-DD HH:mm"))
+        console.log("date1-C=",moment("2017-04-16T08:45:36.350Z").format("YYYY-MM-DD-HH:mm"))
+        console.log("date2-S=",moment.utc().subtract(4, "H").format("YYYY-MM-DD-HH:mm"))
+        console.log("date2-C=",moment.utc(newDoc.createdAt).subtract(4, "H").format("YYYY-MM-DD HH:mm"))
+        // console.log("dateTest=",moment(moment(newDoc.createdAt).format()).format("YYYY-MM-DD HH:mm"))
+        return callback(null,newDoc);
+        // newDoc is the newly inserted document, including its _id
+        // newDoc has no key called notToBeSaved since its value was undefined
+    });
+
 };
-
-function prepareQuery(query) {
-    var tmp = S(query).replaceAll(' ', '*').s;
-    return S(tmp).replaceAll(',', '+').s;
-}
 
 module.exports = model;

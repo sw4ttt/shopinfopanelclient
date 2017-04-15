@@ -8,14 +8,14 @@ var request = require('request');
 
 var model = {};
 
-model.sendData = function (data,callback)
+model.sendData = function (data,url,callback)
 {
     if (!checkData(data))
         return callback({key:"INVALID_DATA_FORMAT",msg:"Param Data has invalid format."});
     request(
         {
             method: 'POST',
-            uri: 'https://shopinfopanel.herokuapp.com/api/test',
+            uri: url,
             json: true,
             body: data
         }

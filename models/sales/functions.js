@@ -8,7 +8,7 @@
 var _ = require('lodash');
 var S = require('string');
 var squel = require('squel');
-var dbHelper = require('./../utils/dbHelper/model.js')
+var a2DbHelper = require('./../utils/a2DbHelper/model')
 var moment = require('moment');
 var functions = {};
 
@@ -32,7 +32,7 @@ functions.getDetails = function (doc,callback)
         .where("FDI_DOCUMENTO = ?", doc.FTI_DOCUMENTO)
         .where("FDI_FECHAOPERACION = ?", doc.FTI_FECHAEMISION)
         .toString();
-    dbHelper.get(queryDetails,function (err,response) {
+    a2DbHelper.get(queryDetails,function (err,response) {
         if (err)
             return callback(err);
         return callback(null,response);

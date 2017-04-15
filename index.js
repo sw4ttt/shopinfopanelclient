@@ -4,7 +4,7 @@ var _ = require('lodash');
 var S = require('string');
 var http = require('http').createServer(app);
 var odbcwrapperphp = "./sw4ttt_modules/OdbcWrapperPhp/odbcwrapperphp.php";
-var databaseHelper = require("./sw4ttt_modules/dbHelper/model.js");
+var urlServer = 'https://shopinfopanel.herokuapp.com/api/test';
 //var bodyParser = require('body-parser');
 // var config = require('./models/config/model.js');
 //var confighelper = new confighelper();
@@ -56,3 +56,17 @@ app.listen(3000, function () {
 http.listen(3000, function(){
     console.log('listening on *:3000');
 });
+
+var dbHelper = require('./models/utils/dbHelper/model')
+
+dbHelper.test(function (err,response) {
+    if (err)
+        console.log("dbHelper-err=",err)
+    console.log("dbHelper-response=",response)
+})
+
+// var cron = require('./models/utils/cron/model');
+//
+// cron.init(urlServer);
+// cron.salesCron({data:"testCron"});
+
