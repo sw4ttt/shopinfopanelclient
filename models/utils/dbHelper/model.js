@@ -6,12 +6,9 @@ var _ = require('lodash');
 var S = require('string');
 var moment = require('moment');
 var Datastore = require('nedb');
-var db = new Datastore({ filename: 'test.db',autoload: true,timestampData: true });
+var db = new Datastore({ filename: './db/test.db',autoload: true,timestampData: true });
 
 var model = {};
-
-
-
 
 model.test = function (callback)
 {
