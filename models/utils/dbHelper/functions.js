@@ -10,15 +10,6 @@ var db = new Datastore({ filename: './db/test.db',autoload: true,timestampData: 
 
 var model = {};
 
-model.save = function (object,callback)
-{
-    db.insert(object, function (err, newObject) {   // Callback is optional
-        if (err)
-            return callback(err)
-        return callback(null,newObject);
-    });
-};
-
 model.test = function (callback)
 {
     var doc = { hello: 'world'
@@ -30,6 +21,8 @@ model.test = function (callback)
         , fruits: [ 'apple', 'orange', 'pear' ]
         , infos: { name: 'nedb' }
     };
+    var a = new Date();
+
     db.insert(doc, function (err, newDoc) {   // Callback is optional
         if (err)
             return callback(err)
@@ -48,6 +41,7 @@ model.test = function (callback)
         // newDoc is the newly inserted document, including its _id
         // newDoc has no key called notToBeSaved since its value was undefined
     });
+
 };
 
 module.exports = model;

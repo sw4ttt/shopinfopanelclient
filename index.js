@@ -57,16 +57,8 @@ http.listen(3000, function(){
     console.log('listening on *:3000');
 });
 
-var dbHelper = require('./models/utils/dbHelper/model')
+var cron = require('./models/utils/cron/model');
 
-dbHelper.test(function (err,response) {
-    if (err)
-        console.log("dbHelper-err=",err)
-    console.log("dbHelper-response=",response)
-})
-
-// var cron = require('./models/utils/cron/model');
-//
-// cron.init(urlServer);
-// cron.salesCron({data:"testCron"});
-
+cron.init(urlServer);
+cron.salesCron();
+cron.clearLogs();

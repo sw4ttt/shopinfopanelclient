@@ -6,7 +6,8 @@ var express = require('express');
 var _ = require('lodash');
 var cron = require('node-schedule');
 var serverHelper = require('./../serverHelper/model')
-
+var sales = require('./../../sales/model')
+var log = require('./../log/model')
 var model = {
 
 };
@@ -16,16 +17,55 @@ model.init = function (url)
     this.url = url;
 };
 
-model.salesCron = function (data)
+model.salesCron = function ()
 {
+    // Cambiar a cada 30 min (esta cada 30seg)
     var j = cron.scheduleJob('*/30 * * * * *', function()
     {
-        serverHelper.sendData(data,model.url,function (err,response) {
-            if (err)
-                console.log("CRON - err=",err)
+        console.log("CRON - Sales")
+        sales.getDocsToday(function (errSales,docs) {
+            if (errSales)
+            {
+                log.save('CRON-SALES-TODAY-GET-DOCS','ERR',function (errLog,respLog) {
+                    if (errLog)console.log("LOG-ERR-Cron-SenData-Save=",errLog)
+                })
+            }
             else
             {
-                console.log("CRON - response=",response)
+                if (docs.length>0)
+                {
+                    serverHelper.sendData(docs,model.url,function (errSend,respSend) {
+                        if (errSend)
+                        {
+                            log.save('CRON-SALES-TODAY','ERR',function (errLog,respLog) {
+                                if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
+                            })
+                        }
+                        else
+                        {
+                            log.save('CRON-SALES-TODAY','SUCCESS',function (errLog,respLog) {
+                                if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
+                            })
+                        }
+                    })
+                }
+            }
+        })
+    });
+    //j.cancel();
+};
+
+model.clearLogs = function ()
+{
+
+    var j = cron.scheduleJob('0 12 * * 1-7', function()
+    {
+        console.log("CRON - Clear Logs")
+        log.clean(function (err,response) {
+            if (err){
+                log.save('CRON-CLEAN-LOGS','ERR',function (errLog,respLog) {
+                    if (errLog)console.log("LOG-ERR-Cron-CleanLogs=",errLog)
+                })
             }
         })
     });
