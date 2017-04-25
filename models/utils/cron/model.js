@@ -34,19 +34,23 @@ model.salesCron = function ()
             {
                 if (docs.length>0)
                 {
-                    serverHelper.sendData(docs,model.url,function (errSend,respSend) {
+                    // console.log("docs=",docs)
+                    serverHelper.sendData(docs,model.url+"/api/",function (errSend,respSend) {
                         if (errSend)
                         {
-                            log.save('CRON-SALES-TODAY','ERR',function (errLog,respLog) {
+                            log.save('CRON-SALES-TODAY','ERR',errSend.msg,function (errLog,respLog) {
                                 if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
                             })
+                            console.log("CRON - Sales - ERR=",errSend)
                         }
-                        else
-                        {
-                            log.save('CRON-SALES-TODAY','SUCCESS',function (errLog,respLog) {
-                                if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
-                            })
-                        }
+                        // else
+                        //     console.log("respSend=",respSend)
+                        // else
+                        // {
+                        //     log.save('CRON-SALES-TODAY','SUCCESS',function (errLog,respLog) {
+                        //         if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
+                        //     })
+                        // }
                     })
                 }
             }

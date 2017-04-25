@@ -11,9 +11,9 @@ var dataStore = require('nedb');
 var db = new dataStore({ filename: './db/logs.db',autoload: true,timestampData: true });
 var model = {};
 
-model.save = function (event,status,callback)
+model.save = function (event,status,msg,callback)
 {
-    db.insert({event:event,status:status},function (err,response) {
+    db.insert({event:event,status:status,msg:msg},function (err,response) {
         if (err)
             return callback(err);
         return callback(null,{success:true});

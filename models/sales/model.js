@@ -130,7 +130,7 @@ model.getDocsDate = function (date,callback)
 
 model.getDocsRange = function (params,callback)
 {
-    console.log("params=",params)
+    // console.log("params=",params)
 
     var query =
         squel.select()
@@ -138,7 +138,7 @@ model.getDocsRange = function (params,callback)
             .from("SOperacionInv")
             .where("FTI_FECHAEMISION between ? AND ?",params.start,params.end)
             .toString();
-    console.log("query=",query)
+    // console.log("query=",query)
     a2DbHelper.get(query,function (err,response) {
         if (err)
             return callback(err);

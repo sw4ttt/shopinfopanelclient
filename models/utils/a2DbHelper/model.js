@@ -8,11 +8,13 @@ var async = require('async');
 var S = require('string');
 var path = require('path');
 var normalize = require('normalize-path');
+var configObject = require('./../../../config.json')
+var fs = require('fs');
 
 var model = {};
 
 var pathScript = normalize(__dirname + "/odbcWrapper.php");
-var paramScript = ["C:/a2Softway/Empre001/Data/"];
+var paramScript = [configObject.a2Path];
 
 /*
     IMPORTANTE:
@@ -48,6 +50,17 @@ model.get = function (query,callback)
         // console.log("else-!query");
         // return callback({msg:"algun error sql.",key:"ERROR_SQL"});
     }
+};
+
+model.checkPath = function (path,callback)
+{
+    if (!path)
+        return callback({status:400,key:"PARAM_PATH_MISSING"});
+    fs.open(path+"SOperacionInv.dat", 'a+', function(err, fd){
+        if (err)
+            return callback(err)
+        return callback(null,{success:true});
+    });
 };
 
 function prepareQuery(query) {
