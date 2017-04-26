@@ -56,12 +56,12 @@ config.checkConfig(function (err,configObject) {
         ioClient.on('connect', function(){
             console.log('SOCKET-SERVER: connect')
 
-            ioClient.emit('client', {key:"CONNECT",msg:"Store Connected",data:{obj:"123"},id:""});
+            socket.emit('call', {type:"client",msg:"me conecte desde tienda"});
             ioClient.on('disconnect', function(){
                 console.log('SOCKET-SERVER: disconnect')
             });
-            ioClient.on('event', function(data){
-                console.log();
+            ioClient.on('newClient', function(data){
+                console.log('SOCKET-SERVER: ',data.msg);
             });
         });
 
