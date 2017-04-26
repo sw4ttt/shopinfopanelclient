@@ -56,7 +56,7 @@ config.checkConfig(function (err,configObject) {
         ioClient.on('connect', function(){
             console.log('SOCKET-SERVER: connect')
 
-            socket.emit('call', {type:"client",msg:"me conecte desde tienda"});
+            ioClient.emit('call', {type:"client",msg:"me conecte desde tienda"});
             ioClient.on('disconnect', function(){
                 console.log('SOCKET-SERVER: disconnect')
             });
