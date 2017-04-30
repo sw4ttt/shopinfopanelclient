@@ -67,9 +67,6 @@ config.checkConfig(function (err,configObject) {
             ioClient.on('disconnect', function(){
                 console.log('SOCKET-SERVER: disconnect')
             });
-            ioClient.on('newClient', function(data){
-                console.log('SOCKET-SERVER: ',data.msg);
-            });
         });
 
         cron.init(configObject.remoteServer);
