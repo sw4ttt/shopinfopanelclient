@@ -22,7 +22,6 @@ model.salesCron = function ()
     // Cambiar a cada 30 min (esta cada 30seg)
     var j = cron.scheduleJob('*/30 * * * * *', function()
     {
-        console.log("CRON - Sales")
         sales.getDocsToday(function (errSales,docs) {
             if (errSales)
             {
@@ -35,13 +34,14 @@ model.salesCron = function ()
                 if (docs.length>0)
                 {
                     // console.log("docs=",docs)
+                    console.log("CRON - Sales: data")
                     serverHelper.sendData(docs,model.url+"/data",function (errSend,respSend) {
                         if (errSend)
                         {
                             log.save('CRON-SALES-TODAY','ERR',errSend.msg,function (errLog,respLog) {
                                 if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
                             })
-                            console.log("CRON - Sales - ERR=",errSend)
+                            console.log("CRON - Sales: ERROR =",errSend)
                         }
                         // else
                         //     console.log("respSend=",respSend)
@@ -53,6 +53,8 @@ model.salesCron = function ()
                         // }
                     })
                 }
+                else
+                    console.log("CRON - Sales: No data")
             }
         })
     });
