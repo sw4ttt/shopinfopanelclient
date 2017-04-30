@@ -5,17 +5,23 @@
 var express = require('express');
 var _ = require('lodash');
 var request = require('request');
+var configObject = require('./../../../config.json')
 
 var model = {};
 
-model.sendData = function (data,url,callback)
+model.sendData = function (docs,url,callback)
 {
-    if (!checkData(data))
+    if (!checkData(docs))
         return callback({key:"INVALID_DATA_FORMAT",msg:"Param Data has invalid format."});
+    var data = {
+        docs: docs,
+        idStore: configObject.idStore,
+        nameStore: configObject.nameStore
+    }
     request(
         {
             method: 'POST',
-            uri: url,
+            uri: "https://shopinfopanel.herokuapp.com/data",
             json: true,
             body: data
         }
@@ -29,7 +35,7 @@ model.sendData = function (data,url,callback)
             }
             else
             {
-                return callback({key:"ERROR_SERVER_RESPONSE",status:response.statusCode,msg:response.statusMessage});
+                return callback({key:"ERROR_SERVER_RESPONSE",status:response.statusCode,msg:response.statusMessage,data:body});
             }
 
         }

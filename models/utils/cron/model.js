@@ -35,7 +35,7 @@ model.salesCron = function ()
                 if (docs.length>0)
                 {
                     // console.log("docs=",docs)
-                    serverHelper.sendData(docs,model.url+"/api/",function (errSend,respSend) {
+                    serverHelper.sendData(docs,model.url+"/data",function (errSend,respSend) {
                         if (errSend)
                         {
                             log.save('CRON-SALES-TODAY','ERR',errSend.msg,function (errLog,respLog) {

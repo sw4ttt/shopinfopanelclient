@@ -56,7 +56,14 @@ config.checkConfig(function (err,configObject) {
         ioClient.on('connect', function(){
             console.log('SOCKET-SERVER: connect')
 
-            ioClient.emit('call', {type:"client",msg:"me conecte desde tienda"});
+            ioClient.emit('call',{
+                type:"client",
+                msg:"me conecte desde tienda",
+                "idStore":"t001",
+                "nameStore":"Tienda de Prueba"
+            },function(data){
+                console.log("SOCKET-RESPONSE=",data)
+            });
             ioClient.on('disconnect', function(){
                 console.log('SOCKET-SERVER: disconnect')
             });

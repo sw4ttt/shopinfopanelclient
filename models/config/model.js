@@ -7,6 +7,7 @@ var _ = require('lodash');
 var S = require('string');
 var shortid = require('shortid');
 var a2DbHelper = require('./../utils/a2DbHelper/model')
+var serverHelper = require('./../utils/serverHelper/model')
 var configFile = require('./../../config.json')
 
 var table = "configuration";
@@ -47,7 +48,14 @@ model.checkConfig = function (callback)
     a2DbHelper.checkPath(configFile.a2Path,function (err,response) {
         if (err)
             return callback(err);
-        return callback(null,configFile);
+        serverHelper.sendData({test:"test"},model.getConfig.remoteServer+"/data",function (errSend,respSend) {
+            if (errSend)
+            {
+                return callback(errSend);
+            }
+            return callback(null,configFile);
+        })
+
     })
 };
 
