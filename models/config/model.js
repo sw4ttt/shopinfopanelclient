@@ -48,11 +48,11 @@ model.checkConfig = function (callback)
     a2DbHelper.checkPath(configFile.a2Path,function (err,response) {
         if (err)
             return callback(err);
-        serverHelper.sendData({test:"test"},model.getConfig.remoteServer+"/data",function (errSend,respSend) {
+
+        console.log("model.getConfig=",model.getConfig().remoteServer+"/api/sales/docs")
+        serverHelper.sendData({test:"test"},model.getConfig().remoteServer+"/api/test",function (errSend,respSend) {
             if (errSend)
-            {
                 return callback(errSend);
-            }
             return callback(null,configFile);
         })
 
