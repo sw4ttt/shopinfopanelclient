@@ -49,7 +49,6 @@ model.checkConfig = function (callback)
         if (err)
             return callback(err);
 
-        console.log("model.getConfig=",model.getConfig().remoteServer+"/api/sales/docs")
         serverHelper.sendData({test:"test"},model.getConfig().remoteServer+"/api/test",function (errSend,respSend) {
             if (errSend)
                 return callback(errSend);
