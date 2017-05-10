@@ -59,3 +59,6 @@
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"uVSc5BoDkg6z6sG5","createdAt":{"$$date":1493515681045},"updatedAt":{"$$date":1493515681045}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"vd4fO4JOJWusOnF4","createdAt":{"$$date":1493521770746},"updatedAt":{"$$date":1493521770746}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"xTIfeIlK59CGLTJO","createdAt":{"$$date":1493515111633},"updatedAt":{"$$date":1493515111633}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Not Found","_id":"jiv9drPVWwObd1KU","createdAt":{"$$date":1494374376057},"updatedAt":{"$$date":1494374376057}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Not Found","_id":"FO6MX7hRom8FlKo5","createdAt":{"$$date":1494374401865},"updatedAt":{"$$date":1494374401865}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Not Found","_id":"dxNppbT7FFXNJsO6","createdAt":{"$$date":1494374431755},"updatedAt":{"$$date":1494374431755}}

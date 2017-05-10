@@ -21,7 +21,7 @@ model.sendData = function (docs,url,callback)
     request(
         {
             method: 'POST',
-            uri: "https://shopinfopanel.herokuapp.com/data",
+            uri: url,
             json: true,
             body: data
         }
