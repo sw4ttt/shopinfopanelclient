@@ -1,64 +1,117 @@
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"02FpAQxJ16ejVSnP","createdAt":{"$$date":1494376291678},"updatedAt":{"$$date":1494376291678}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"0GEcIzi55M5Wanod","createdAt":{"$$date":1493515710653},"updatedAt":{"$$date":1493515710653}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"0hOJgh8utxmNdtte","createdAt":{"$$date":1494375961982},"updatedAt":{"$$date":1494375961982}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"1JVgFU19uWiGI1PI","createdAt":{"$$date":1494376381712},"updatedAt":{"$$date":1494376381712}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"22eHZJDj1MQZsNnz","createdAt":{"$$date":1493521511740},"updatedAt":{"$$date":1493521511740}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"27ZnBN0d2COc3X02","createdAt":{"$$date":1494376621536},"updatedAt":{"$$date":1494376621536}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"2BeK0JddYgbEdxck","createdAt":{"$$date":1494376471345},"updatedAt":{"$$date":1494376471345}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"2CFG58zacSyls6jw","createdAt":{"$$date":1494375871741},"updatedAt":{"$$date":1494375871741}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"2sZCtRWq2hmfsKR1","createdAt":{"$$date":1494376321703},"updatedAt":{"$$date":1494376321703}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"35JPSDZ8xfpyJAqK","createdAt":{"$$date":1493515410937},"updatedAt":{"$$date":1493515410937}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"54U0SnvqSicDESi7","createdAt":{"$$date":1494377471880},"updatedAt":{"$$date":1494377471880}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"5DnOS1AFlt9hLzDD","createdAt":{"$$date":1493515020987},"updatedAt":{"$$date":1493515020987}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"5Wz6BehlIxZuxMEe","createdAt":{"$$date":1493515471305},"updatedAt":{"$$date":1493515471305}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"5cvXacCtUe9l9u3a","createdAt":{"$$date":1494377003814},"updatedAt":{"$$date":1494377003814}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"5mpSiuOGMbxXpp1g","createdAt":{"$$date":1493521080794},"updatedAt":{"$$date":1493521080794}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ETIMEDOUT","errno":"ETIMEDOUT","syscall":"connect","address":"54.243.110.76","port":443},"_id":"7Vjg9R6KvV5wUiee","createdAt":{"$$date":1493522511600},"updatedAt":{"$$date":1493522511600}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"7r3L4GO094RW8nDJ","createdAt":{"$$date":1494375811610},"updatedAt":{"$$date":1494375811610}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"7wU53FLbmETIUraF","createdAt":{"$$date":1493514930507},"updatedAt":{"$$date":1493514930507}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"847Ef6gzQfUfbATj","createdAt":{"$$date":1493522340588},"updatedAt":{"$$date":1493522340588}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"8Gv3tYKD3gXRbT25","createdAt":{"$$date":1493522520594},"updatedAt":{"$$date":1493522520594}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"8NaCO7f6IgwY3u7j","createdAt":{"$$date":1493515350885},"updatedAt":{"$$date":1493515350885}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"9KSZ6gFkCEqvOUUw","createdAt":{"$$date":1494376261712},"updatedAt":{"$$date":1494376261712}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"AbHTxil53zGN5C4S","createdAt":{"$$date":1493517961210},"updatedAt":{"$$date":1493517961210}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"BlisUIGMMiIBhglZ","createdAt":{"$$date":1493514691576},"updatedAt":{"$$date":1493514691576}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Not Found","_id":"BxcE6e02E5TMZ2lk","createdAt":{"$$date":1493514481725},"updatedAt":{"$$date":1493514481725}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"Cclmany6gQKMi6ho","createdAt":{"$$date":1493515500585},"updatedAt":{"$$date":1493515500585}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"CpxxGewEZDN10SU9","createdAt":{"$$date":1494376502085},"updatedAt":{"$$date":1494376502085}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"CyCV386nH2JcN69J","createdAt":{"$$date":1494376201525},"updatedAt":{"$$date":1494376201525}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"DPPCLrI03yOKkr2t","createdAt":{"$$date":1493521740600},"updatedAt":{"$$date":1493521740600}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"DXdWMCRmJ9KRBN8Z","createdAt":{"$$date":1493514571409},"updatedAt":{"$$date":1493514571409}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"E8CCzIVCJpJ0J3Ep","createdAt":{"$$date":1494376861910},"updatedAt":{"$$date":1494376861910}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"F3818fGUI7eNm86F","createdAt":{"$$date":1493514990636},"updatedAt":{"$$date":1493514990636}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Not Found","_id":"FO6MX7hRom8FlKo5","createdAt":{"$$date":1494374401865},"updatedAt":{"$$date":1494374401865}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"G9CRyxBN8ilIFoZE","createdAt":{"$$date":1493515560995},"updatedAt":{"$$date":1493515560995}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"GEylvnCQltVuvXyp","createdAt":{"$$date":1494376742333},"updatedAt":{"$$date":1494376742333}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"GbDJFxG5CMeGvkbG","createdAt":{"$$date":1493521720031},"updatedAt":{"$$date":1493521720031}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Not Found","_id":"I7J9eGEIfrjHONyc","createdAt":{"$$date":1493514511276},"updatedAt":{"$$date":1493514511276}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"Ilh353NbKsnfU6YF","createdAt":{"$$date":1494375901962},"updatedAt":{"$$date":1494375901962}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"Jrj9D1hziFAzEVke","createdAt":{"$$date":1494376442741},"updatedAt":{"$$date":1494376442741}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"JtkZ88GrVslmVD3j","createdAt":{"$$date":1493514841680},"updatedAt":{"$$date":1493514841680}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"KyQvfcLUeBEx9Fz2","createdAt":{"$$date":1493515182232},"updatedAt":{"$$date":1493515182232}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Service Unavailable","_id":"L16GbuwKEmmyYjEc","createdAt":{"$$date":1494378030954},"updatedAt":{"$$date":1494378030954}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"LUvX6z5pgKh3lyEG","createdAt":{"$$date":1493515081757},"updatedAt":{"$$date":1493515081757}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Service Unavailable","_id":"Ls6OVuKPWgK6P5vI","createdAt":{"$$date":1494378061091},"updatedAt":{"$$date":1494378061091}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"M9wumffHYnXckQQf","createdAt":{"$$date":1493515530982},"updatedAt":{"$$date":1493515530982}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"MVlx3spUboWDQ6I0","createdAt":{"$$date":1494376531768},"updatedAt":{"$$date":1494376531768}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"McAU1a9ktkE2fQt7","createdAt":{"$$date":1493514811859},"updatedAt":{"$$date":1493514811859}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"N64gIQ4XX8L9MUtc","createdAt":{"$$date":1493515801623},"updatedAt":{"$$date":1493515801623}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"NeYA4tRxrFTrm6pb","createdAt":{"$$date":1494376711311},"updatedAt":{"$$date":1494376711311}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Not Found","_id":"NjQQM3M86DJr8etP","createdAt":{"$$date":1493514541457},"updatedAt":{"$$date":1493514541457}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"O6as794DjiFxVNEd","createdAt":{"$$date":1493515441229},"updatedAt":{"$$date":1493515441229}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"OmPpgnTJCOYfgtCo","createdAt":{"$$date":1494376681782},"updatedAt":{"$$date":1494376681782}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"PuAqZ3FgY8fF7Jr8","createdAt":{"$$date":1494376231530},"updatedAt":{"$$date":1494376231530}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"QMDj1bIIb7YGxSbH","createdAt":{"$$date":1493515051117},"updatedAt":{"$$date":1493515051117}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"RcYsFvFdAVturFJ3","createdAt":{"$$date":1494376651572},"updatedAt":{"$$date":1494376651572}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"SxBBVoR8IbIYbqP0","createdAt":{"$$date":1494376022167},"updatedAt":{"$$date":1494376022167}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"T7EeolyDCCJyN18A","createdAt":{"$$date":1493515621424},"updatedAt":{"$$date":1493515621424}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"TMBaEKKzjzfteLiH","createdAt":{"$$date":1494376351665},"updatedAt":{"$$date":1494376351665}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"TaeJGylnyK5If0f9","createdAt":{"$$date":1493517931183},"updatedAt":{"$$date":1493517931183}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"U1ETTWBgp1pQfid1","createdAt":{"$$date":1493515291689},"updatedAt":{"$$date":1493515291689}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"Vb7QRtz05TRsXqBU","createdAt":{"$$date":1493515322053},"updatedAt":{"$$date":1493515322053}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"VlfHw3slfXEgiFWg","createdAt":{"$$date":1493521530595},"updatedAt":{"$$date":1493521530595}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"Wa4zyodYXGXs7AdA","createdAt":{"$$date":1493515652015},"updatedAt":{"$$date":1493515652015}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"Wolykoao3w2anUIb","createdAt":{"$$date":1494377101726},"updatedAt":{"$$date":1494377101726}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"X8Puzxdem1if7v0P","createdAt":{"$$date":1494376561938},"updatedAt":{"$$date":1494376561938}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"XJtlP0fmnXLIhKjA","createdAt":{"$$date":1494376171424},"updatedAt":{"$$date":1494376171424}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"Yy5GCHR9idy3xCL2","createdAt":{"$$date":1493514631399},"updatedAt":{"$$date":1493514631399}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"YzSbH9JipDJNLz7k","createdAt":{"$$date":1493514963849},"updatedAt":{"$$date":1493514963849}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"acxxysEvioayLdFO","createdAt":{"$$date":1494376051722},"updatedAt":{"$$date":1494376051722}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"aeUEqrUIpNN9dW9t","createdAt":{"$$date":1493514604600},"updatedAt":{"$$date":1493514604600}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"ccGfzbQbRWvWWz1v","createdAt":{"$$date":1494376955267},"updatedAt":{"$$date":1494376955267}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"ckhrRl7BKH7OdE9r","createdAt":{"$$date":1493521800760},"updatedAt":{"$$date":1493521800760}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"dc37ojdeaCbVSNRw","createdAt":{"$$date":1494375721816},"updatedAt":{"$$date":1494375721816}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"dwf9eziINVS71hmn","createdAt":{"$$date":1493515231060},"updatedAt":{"$$date":1493515231060}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Not Found","_id":"dxNppbT7FFXNJsO6","createdAt":{"$$date":1494374431755},"updatedAt":{"$$date":1494374431755}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"e5eFg000a6AhVL2Z","createdAt":{"$$date":1493514782023},"updatedAt":{"$$date":1493514782023}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"e95b0ipARkMYDAMU","createdAt":{"$$date":1494376081431},"updatedAt":{"$$date":1494376081431}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"fQq8BHpfF65Yp8ou","createdAt":{"$$date":1494376921606},"updatedAt":{"$$date":1494376921606}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"fY7iSXaSsAry4JRE","createdAt":{"$$date":1494376771572},"updatedAt":{"$$date":1494376771572}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"fhOEeWLferhKyVez","createdAt":{"$$date":1494376891320},"updatedAt":{"$$date":1494376891320}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"h48T5bSJSXXWYG3r","createdAt":{"$$date":1493517991207},"updatedAt":{"$$date":1493517991207}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"i9Bs5PD2GyMQnAxO","createdAt":{"$$date":1493515741579},"updatedAt":{"$$date":1493515741579}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ETIMEDOUT","errno":"ETIMEDOUT","syscall":"connect","address":"23.23.221.88","port":80},"_id":"iTBDZZMGSCBUhCvj","createdAt":{"$$date":1493514742225},"updatedAt":{"$$date":1493514742225}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"iwadD4u151ZE06uO","createdAt":{"$$date":1494375781515},"updatedAt":{"$$date":1494375781515}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"jBMXsLBgJgKolwzz","createdAt":{"$$date":1493515381085},"updatedAt":{"$$date":1493515381085}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"jeUmnd4o5cAZKbTp","createdAt":{"$$date":1493522280739},"updatedAt":{"$$date":1493522280739}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Not Found","_id":"jiv9drPVWwObd1KU","createdAt":{"$$date":1494374376057},"updatedAt":{"$$date":1494374376057}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"kD58yL0kh0wof5Qr","createdAt":{"$$date":1494377071559},"updatedAt":{"$$date":1494377071559}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Service Unavailable","_id":"kQQ9z2d0X6YKEAsk","createdAt":{"$$date":1494378001359},"updatedAt":{"$$date":1494378001359}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"kXA6Wd0PVeHud3QI","createdAt":{"$$date":1494377011551},"updatedAt":{"$$date":1494377011551}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"klie22mCFwgUr6kJ","createdAt":{"$$date":1493522310595},"updatedAt":{"$$date":1493522310595}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"ks99jDxZzUAiDeEq","createdAt":{"$$date":1494376801992},"updatedAt":{"$$date":1494376801992}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"mLqhEqLOHt36FLqn","createdAt":{"$$date":1494375841706},"updatedAt":{"$$date":1494375841706}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"mRI7VwhBTg29pdHf","createdAt":{"$$date":1494376142187},"updatedAt":{"$$date":1494376142187}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"mfIxPWHmFatfGb8l","createdAt":{"$$date":1494376111645},"updatedAt":{"$$date":1494376111645}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"nA4DOkK0Vq5ZDk3h","createdAt":{"$$date":1493515201208},"updatedAt":{"$$date":1493515201208}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"nyCa1okyOJDEUHFJ","createdAt":{"$$date":1494375751584},"updatedAt":{"$$date":1494375751584}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"oYO0sLKc7HBnc98K","createdAt":{"$$date":1493515261637},"updatedAt":{"$$date":1493515261637}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"okUkcDD9BIqVj0H6","createdAt":{"$$date":1493514901797},"updatedAt":{"$$date":1493514901797}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"p4rrneHooUg22eAk","createdAt":{"$$date":1494377041561},"updatedAt":{"$$date":1494377041561}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"pnZH2N3w2GlAf5cd","createdAt":{"$$date":1493515591659},"updatedAt":{"$$date":1493515591659}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"q2eEfNGJLfdwltuQ","createdAt":{"$$date":1493521054419},"updatedAt":{"$$date":1493521054419}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":80},"_id":"rx8Fpym5TpgVdWWi","createdAt":{"$$date":1493514751040},"updatedAt":{"$$date":1493514751040}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"ryseN3rrPV1aS0eI","createdAt":{"$$date":1493514871745},"updatedAt":{"$$date":1493514871745}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"sa6AruhgLw5nTHP5","createdAt":{"$$date":1493514662037},"updatedAt":{"$$date":1493514662037}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"tMy7P5MySnd8LSCV","createdAt":{"$$date":1494377491129},"updatedAt":{"$$date":1494377491129}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Service Unavailable","_id":"tq9Bc6L0m2BdxzHT","createdAt":{"$$date":1494377971182},"updatedAt":{"$$date":1494377971182}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"u5cbWrYv7a6InC1C","createdAt":{"$$date":1493515770818},"updatedAt":{"$$date":1493515770818}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"u94kekHU3nvtzh1s","createdAt":{"$$date":1493515141505},"updatedAt":{"$$date":1493515141505}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"uPtKYHf8B1LbVe3O","createdAt":{"$$date":1494376411476},"updatedAt":{"$$date":1494376411476}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"uVSc5BoDkg6z6sG5","createdAt":{"$$date":1493515681045},"updatedAt":{"$$date":1493515681045}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"uwTaNWofch3OvDYV","createdAt":{"$$date":1494376831539},"updatedAt":{"$$date":1494376831539}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":{"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"shopinfopanel.herokuapp.com","host":"shopinfopanel.herokuapp.com","port":443},"_id":"vd4fO4JOJWusOnF4","createdAt":{"$$date":1493521770746},"updatedAt":{"$$date":1493521770746}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"vqtwKa8m1HrMQx9J","createdAt":{"$$date":1494376591670},"updatedAt":{"$$date":1494376591670}}
 {"event":"CRON-SALES-TODAY","status":"ERR","msg":"Unauthorized","_id":"xTIfeIlK59CGLTJO","createdAt":{"$$date":1493515111633},"updatedAt":{"$$date":1493515111633}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"zaWvQiXy9exQPKao","createdAt":{"$$date":1494375931510},"updatedAt":{"$$date":1494375931510}}
+{"event":"CRON-SALES-TODAY","status":"ERR","msg":"Conflict","_id":"zuPJDXfk4Ee9dGMX","createdAt":{"$$date":1494375991640},"updatedAt":{"$$date":1494375991640}}
