@@ -59,8 +59,8 @@ config.checkConfig(function (err,configObject) {
             ioClient.emit('call',{
                 type:"client",
                 msg:"me conecte desde tienda",
-                "idStore":"t001",
-                "nameStore":"Tienda de Prueba"
+                "idStore":configObject.idStore,
+                "nameStore":configObject.nameStore
             },function(data){
                 console.log("SOCKET-RESPONSE=",data)
             });
