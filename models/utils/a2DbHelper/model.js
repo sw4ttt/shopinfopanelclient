@@ -31,8 +31,6 @@ model.get = function (query,callback)
         paramScript[1] = prepareQuery(query);
         runner.exec("C:/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
         {
-            // return callbackAsync(null,dataSQL);
-
             if (S(dataSQL).contains('error'))
                 return callback({key:"ERROR_SQL",msg:dataSQL});
             else
