@@ -31,8 +31,11 @@ model.get = function (query,callback)
         paramScript[1] = prepareQuery(query);
         runner.exec("C:/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
         {
+            if(err || stderr){
+                return callback({key:"ERROR_SCRIPTPHP_GET_SALES_ERR_STDERR",msg:{err:err,stderr:stderr}});
+            }
             if (S(dataSQL).contains('error'))
-                return callback({key:"ERROR_SQL",msg:dataSQL});
+                return callback({key:"ERROR_SCRIPTPHP_GET_SALES_SQL",msg:dataSQL});
             else
             {
                 var out = null;
