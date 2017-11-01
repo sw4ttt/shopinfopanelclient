@@ -25,7 +25,7 @@ model.salesCron = function ()
         sales.getDocsToday(function (errSales,docs) {
             if (errSales)
             {
-                console.log("errSales=",JSON.stringify(errSales));
+                console.log("CRON - SALES - ERR=",JSON.stringify(errSales));
 
                 log.save('CRON-SALES-TODAY-GET-DOCS','ERR',_.get(errSales,'msg',"ERROR SIN MENSAJE"),function (errLog,respLog) {
                     if (errLog)console.log("LOG-ERR-Cron-SenData-Save=",errLog)
