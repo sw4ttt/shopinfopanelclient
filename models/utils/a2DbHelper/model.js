@@ -29,7 +29,7 @@ model.get = function (query,callback)
     else
     {
         paramScript[1] = prepareQuery(query);
-        runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
+        runner.exec("C:/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
         {
             // return callbackAsync(null,dataSQL);
 
