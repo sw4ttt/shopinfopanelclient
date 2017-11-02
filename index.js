@@ -51,6 +51,20 @@ config.checkConfig(function (err,configObject) {
             console.log('listening on *:3000');
         });
 
+        http.on('tlsClientError', function (e, socket) {
+            console.log('tlsError');
+            console.log(e);
+        });
+          
+        http.on('clientError', function (e) {
+            console.log('clientError');
+            console.log(e);
+        });
+        
+        http.on('resumeSession', function (id, cb) {
+            console.log('resumeSess ' + id.toString('hex'));    
+        });
+
         var ioClient = require('socket.io-client')(configObject.remoteServer);
 
         ioClient.on('connect', function(){

@@ -8,7 +8,7 @@ var async = require('async');
 var S = require('string');
 var path = require('path');
 var normalize = require('normalize-path');
-var configObject = require('./../../../config.json');
+var configObject = require('./../../../config.json')
 var fs = require('fs');
 var configFile = require('./../../../config.json')
 
@@ -32,10 +32,11 @@ model.get = function (query,callback)
         paramScript[1] = prepareQuery(query);
         runner.exec(configFile.phpPath+" "+pathScript+" "+paramScript, function(err, dataSQL, stderr)
         {
-            // return callbackAsync(null,dataSQL);
-
+            if(err || stderr){
+                return callback({key:"ERROR_SCRIPTPHP_GET_SALES_ERR_STDERR",msg:{err:err,stderr:stderr}});
+            }
             if (S(dataSQL).contains('error'))
-                return callback({key:"ERROR_SQL",msg:dataSQL});
+                return callback({key:"ERROR_SCRIPTPHP_GET_SALES_SQL",msg:dataSQL});
             else
             {
                 var out = null;
