@@ -1,5 +1,7 @@
 heroku logs --tail
 
+qckwinsvc --name "ShopInfoPanelClient" --description "ShopInfoPanelClient" --script "E:/Proyectos/SISTEMA/shopinfopanelclient/index.js" --startImmediately
+qckwinsvc --uninstall --name "ShopInfoPanelClient" --script "E:/Proyectos/SISTEMA/shopinfopanelclient/index.js"
 
 var j = cron.scheduleJob('*/1 * * * *', function()
 {
