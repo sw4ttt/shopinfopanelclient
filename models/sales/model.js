@@ -47,8 +47,8 @@ model.getDocsToday = function (callback)
         .fields(queryFields)
         .from("SOperacionInv")
         .join("SDetalleVenta", null, "SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO")
-        .where("FTI_FECHAEMISION = ?", moment().format("YYYY-MM-DD"))
-        .where("FDI_FECHAOPERACION = ?", moment().format("YYYY-MM-DD"))
+        .where("FTI_FECHAEMISION = ?", "2017-10-29")
+        .where("FDI_FECHAOPERACION = ?", "2017-10-29")
         .toString();
 
     a2DbHelper.get(test,function (err,response) {
@@ -74,7 +74,8 @@ model.getDocsToday = function (callback)
                     items:docVal
                 }
                 docsList.push(doc);
-            })
+            });
+            console.log("DOCs=",JSON.stringify(docsList));
             return callback(null,docsList);
         }
     })

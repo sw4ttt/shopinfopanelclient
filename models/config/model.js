@@ -10,13 +10,13 @@ var a2DbHelper = require('./../utils/a2DbHelper/model')
 var serverHelper = require('./../utils/serverHelper/model')
 var configFile = require('./../../config.json')
 
-var table = "configuration";
 var configKeys = [
     "nameStore",
     "idStore",
     "a2Path",
-    "remoteServer"
-]
+    "remoteServer",
+    "phpPath"
+];
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 

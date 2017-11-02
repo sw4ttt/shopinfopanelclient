@@ -8,8 +8,9 @@ var async = require('async');
 var S = require('string');
 var path = require('path');
 var normalize = require('normalize-path');
-var configObject = require('./../../../config.json')
+var configObject = require('./../../../config.json');
 var fs = require('fs');
+var configFile = require('./../../../config.json')
 
 var model = {};
 
@@ -29,7 +30,7 @@ model.get = function (query,callback)
     else
     {
         paramScript[1] = prepareQuery(query);
-        runner.exec("D:/Web/UniServerZ/core/php56/php.exe " + pathScript + " " +paramScript, function(err, dataSQL, stderr)
+        runner.exec(configFile.phpPath+" "+pathScript+" "+paramScript, function(err, dataSQL, stderr)
         {
             // return callbackAsync(null,dataSQL);
 
@@ -47,8 +48,6 @@ model.get = function (query,callback)
                 return callback(null,out);
             }
         });
-        // console.log("else-!query");
-        // return callback({msg:"algun error sql.",key:"ERROR_SQL"});
     }
 };
 
