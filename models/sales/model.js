@@ -75,7 +75,7 @@ model.getDocsToday = function (callback)
                 }
                 docsList.push(doc);
             });
-            console.log("DOCs=",JSON.stringify(docsList));
+            console.log("DOCs=",_.isArray(docsList)?docsList.length:[]);
             return callback(null,docsList);
         }
     })
