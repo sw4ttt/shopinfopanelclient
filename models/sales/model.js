@@ -41,14 +41,15 @@ var fieldsDetails = [
 
 model.getDocsToday = function (callback)
 {
+    var date = moment().format("YYYY-MM-DD");
     var queryFields = _.union(fields,fieldsDetails);
     var test =
         squel.select()
         .fields(queryFields)
         .from("SOperacionInv")
         .join("SDetalleVenta", null, "SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO")
-        .where("FTI_FECHAEMISION = ?", "2017-10-29")
-        .where("FDI_FECHAOPERACION = ?", "2017-10-29")
+        .where("FTI_FECHAEMISION = ?", date)
+        .where("FDI_FECHAOPERACION = ?", date)
         .toString();
 
     a2DbHelper.get(test,function (err,response) {
