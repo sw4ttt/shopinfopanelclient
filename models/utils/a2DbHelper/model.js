@@ -16,7 +16,6 @@ var model = {};
 
 var pathScript = normalize(__dirname + "/odbcWrapper.php");
 var paramScript = [configObject.a2Path];
-
 /*
     IMPORTANTE:
         -Los campos del select deben estar presente. No puede ser Select *.
@@ -30,7 +29,7 @@ model.get = function (query,callback)
     else
     {
         paramScript[1] = prepareQuery(query);
-        runner.exec(configFile.phpPath+" "+pathScript+" "+paramScript, function(err, dataSQL, stderr)
+        runner.exec(configFile.phpPath+" "+pathScript+" "+paramScript,{windowsHide:true}, function(err, dataSQL, stderr)
         {
             if(err || stderr){
                 return callback({key:"ERROR_SCRIPTPHP_GET_SALES_ERR_STDERR",msg:{err:err,stderr:stderr}});
