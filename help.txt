@@ -1,5 +1,9 @@
 heroku logs --tail
 
+PM2_HOME
+C:\pm2
+npm install pm2-windows-startup -g
+pm2-startup install
 qckwinsvc --name "ShopInfoPanelClient" --description "ShopInfoPanelClient" --script "E:/Proyectos/SISTEMA/shopinfopanelclient/index.js" --startImmediately
 qckwinsvc --uninstall --name "ShopInfoPanelClient" --script "E:/Proyectos/SISTEMA/shopinfopanelclient/index.js"
 
