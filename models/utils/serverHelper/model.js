@@ -17,7 +17,7 @@ model.sendData = function (docs,url,callback)
         docs: docs,
         idStore: configObject.idStore,
         nameStore: configObject.nameStore
-    }
+    };
     request(
         {
             method: 'POST',
@@ -29,7 +29,39 @@ model.sendData = function (docs,url,callback)
 
             if (error)
                 return callback({key:"ERROR_CONNECTING_TO_SERVER",msg:error});
-            if (response.statusCode == 200)
+            if (response.statusCode === 200)
+            {
+                return callback(null,{success:true, data:body});
+            }
+            else
+            {
+                return callback({key:"ERROR_SERVER_RESPONSE",status:response.statusCode,msg:response.statusMessage,data:body});
+            }
+
+        }
+    )
+};
+
+model.existDocsData = function (docsIds,url,callback)
+{
+    if (!_.isArray(docsIds))
+        return callback({key:"INVALID_DATA_FORMAT",msg:"Param Data has invalid format."});
+    var data = {
+        docsIds: docsIds,
+        idStore: configObject.idStore
+    };
+    request(
+        {
+            method: 'POST',
+            uri: url,
+            json: true,
+            body: data
+        }
+        , function (error, response, body) {
+
+            if (error)
+                return callback({key:"ERROR_CONNECTING_TO_SERVER",msg:error});
+            if (response.statusCode === 200)
             {
                 return callback(null,{success:true, data:body});
             }
@@ -44,6 +76,6 @@ model.sendData = function (docs,url,callback)
 
 var checkData = function (data) {
     return _.isObject(data);
-}
+};
 
 module.exports = model;

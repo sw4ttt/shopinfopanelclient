@@ -88,14 +88,4 @@ config.checkConfig(function (err,configObject) {
         cron.clearLogs();
 
     }
-})
-
-
-
-
-
-// console.log("process.env=",process.env)
-
-// cron.init(urlServer);
-// cron.salesCron();
-// cron.clearLogs();
+});
