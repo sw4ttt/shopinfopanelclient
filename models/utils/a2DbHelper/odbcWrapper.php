@@ -26,6 +26,6 @@ else
             $arrayOut[$index]  = $row;
             $index++;
         }
-        echo json_encode($arrayOut);
+        echo json_encode($arrayOut,JSON_UNESCAPED_UNICODE);
     }
 }
