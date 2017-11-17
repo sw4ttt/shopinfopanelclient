@@ -21,7 +21,7 @@ model.init = function (url)
 model.salesCron = function ()
 {
     // Cambiar a cada 30 min (esta cada 30seg)
-    var j = cron.scheduleJob('*/10 * * * * *', function()
+    var j = cron.scheduleJob('*/5 * * * *', function()
     {
         sales.getDocsIdToday(function (err,docsIds) {
 
