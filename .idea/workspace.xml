@@ -31,9 +31,12 @@
       <file leaf-file-name="model.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/sales/model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="94" column="16" lean-forward="true" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="143">
+              <caret line="89" column="28" lean-forward="true" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+              <folding>
+                <element signature="e#3191#4707#0" expanded="false" />
+                <element signature="e#4759#5462#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,30 +96,9 @@
       <file leaf-file-name="model.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/utils/cron/model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
+            <state relative-caret-position="534">
               <caret line="73" column="32" lean-forward="false" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-              <folding>
-                <marker date="1511189495331" expanded="true" signature="430:4879" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4428" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4466" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4502" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4660" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4686" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4708" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4728" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4839" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4849" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3493:4857" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3662:4112" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="3716:3965" ph="//..." />
-                <marker date="1511189495331" expanded="true" signature="4165:4339" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="4506:4630" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="4749:4825" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="4912:5309" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="4975:5287" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="5060:5280" ph="{...}" />
-                <marker date="1511189495331" expanded="true" signature="5082:5270" ph="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -287,8 +269,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1456" />
-    <option name="height" value="876" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -588,13 +570,6 @@
       <workItem from="1510701089150" duration="2179000" />
       <workItem from="1510705062533" duration="881000" />
       <workItem from="1510706368222" duration="9976000" />
-    </task>
-    <task id="LOCAL-00009" summary="Stuff">
-      <created>1490062045966</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1490062045966</updated>
     </task>
     <task id="LOCAL-00010" summary="Stuff">
       <created>1490267098761</created>
@@ -932,11 +907,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511189541123</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="test">
+      <created>1511189696256</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1511189696256</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="385314000" />
+    <option name="totallyTimeSpent" value="385751000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1001,7 +983,8 @@
     <MESSAGE value="Un vainero" />
     <MESSAGE value="para instalar" />
     <MESSAGE value="Quitando campo de Persona de Contacto." />
-    <option name="LAST_COMMIT_MESSAGE" value="Quitando campo de Persona de Contacto." />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1276,35 +1259,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/utils/cron/model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="73" column="32" lean-forward="false" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-          <folding>
-            <marker date="1511189495331" expanded="true" signature="430:4879" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4428" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4466" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4502" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4660" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4686" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4708" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4728" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4839" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4849" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3493:4857" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3662:4112" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="3716:3965" ph="//..." />
-            <marker date="1511189495331" expanded="true" signature="4165:4339" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="4506:4630" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="4749:4825" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="4912:5309" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="4975:5287" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="5060:5280" ph="{...}" />
-            <marker date="1511189495331" expanded="true" signature="5082:5270" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1323,11 +1277,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/utils/cron/model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="73" column="32" lean-forward="false" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/sales/model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="94" column="16" lean-forward="true" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="143">
+          <caret line="89" column="28" lean-forward="true" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+          <folding>
+            <element signature="e#3191#4707#0" expanded="false" />
+            <element signature="e#4759#5462#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
