@@ -85,9 +85,9 @@ model.getDocsToday = function (callback) {
 };
 
 model.getDocsIdToday = function (callback) {
-    // var date = moment.utc().subtract(4, 'hours').format("YYYY-MM-DD");
+    var date = moment.utc().subtract(4, 'hours').format("YYYY-MM-DD");
     // console.log("date=",date);
-    var date = "2017-11-19";
+    // var date = "2017-11-19";
 
     var test = "SELECT FTI_DOCUMENTO FROM SOperacionInv WHERE FTI_FECHAEMISION = '"+date+"'";
 
