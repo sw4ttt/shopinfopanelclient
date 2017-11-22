@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f565a61c-4654-4a45-aa4a-ad74c98872a3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -452,13 +452,6 @@
       <workItem from="1510705062533" duration="881000" />
       <workItem from="1510706368222" duration="9976000" />
     </task>
-    <task id="LOCAL-00011" summary="Stuff">
-      <created>1490326329105</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1490326329105</updated>
-    </task>
     <task id="LOCAL-00012" summary="Stuff">
       <created>1490433946842</created>
       <option name="number" value="00012" />
@@ -795,11 +788,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511190133688</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="gitignore">
+      <created>1511391304971</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1511391304971</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="386418000" />
+    <option name="totallyTimeSpent" value="386550000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -861,7 +861,8 @@
     <MESSAGE value="para instalar" />
     <MESSAGE value="Quitando campo de Persona de Contacto." />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
