@@ -19,6 +19,7 @@
     "gasparesganga-jquery-loading-overlay": "^1.5.3",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "mssql": "^4.1.0",
     "nedb": "^1.8.0",
     "node-notifier": "^5.1.2",
     "node-schedule": "^1.2.0",
