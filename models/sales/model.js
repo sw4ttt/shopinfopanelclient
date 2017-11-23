@@ -86,21 +86,21 @@ model.getDocsToday = function (callback) {
 model.getDocsIdToday = function (callback) {
   var date = moment.utc().subtract(4, 'hours').format("YYYY-MM-DD");
   // console.log("date=",date);
-  // var date = '2007-09-28'
+  // var date = '2010-10-17'
 
-  var test = 'SELECT FTI_DOCUMENTO FROM SOperacionInv WHERE FTI_FECHAEMISION = \'' + date + '\''
+  var test = 'SELECT FTI_DOCUMENTO,FTI_TIPO FROM SOperacionInv WHERE FTI_FECHAEMISION = \'' + date + '\''
 
   a2DbHelper.get(test, function (err, response) {
     if (err)
-      return callback(err)
+      return callback(err);
     else {
-      var idsFiltered = _.filter(_.map(response, 'FTI_DOCUMENTO'),function (docId) {
-        return !_.isNaN(parseInt(docId));
-      })
-      return callback(null, idsFiltered)
+      var idsFiltered = _.filter(response,function (doc) {
+        return !_.isNaN(parseInt(doc.FTI_DOCUMENTO)) && (doc.FTI_TIPO === "11" || doc.FTI_TIPO === "12");
+      });
+      return callback(null, _.map(idsFiltered, 'FTI_DOCUMENTO'))
     }
   })
-}
+};
 
 model.getDocsDate = function (date, callback) {
   if (!moment(date).isValid())
