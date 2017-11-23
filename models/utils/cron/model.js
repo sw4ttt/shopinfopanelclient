@@ -24,7 +24,6 @@ model.salesCron = function ()
     var j = cron.scheduleJob('*/5 * * * *', function()
     {
         sales.getDocsIdToday(function (err,docsIds) {
-
             if (err)
             {
                 console.log("CRON - SALES - ERR=",JSON.stringify(err));
@@ -35,27 +34,28 @@ model.salesCron = function ()
             }
             else{
                 if(docsIds.length > 0){
-                    console.log("\n\n----------------------")
-                    console.log("Facturas de Hoy = ",docsIds);
+                    console.log("\n\nCRON - Sales - START ----------------------");
+                    console.log("   Facturas de Hoy:(",docsIds.length,")=\n",docsIds);
                     serverHelper.existDocsData(docsIds,model.url+"/api/sales/docs-exist",function (errSend,respSend) {
                         if (errSend)
                         {
                             log.save('CRON-SALES-TODAY','ERR',errSend.msg,function (errLog,respLog) {
                                 if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
                             });
-                            console.log("CRON - Sales: ERROR =",errSend)
+                            console.log("CRON - Sales: ERROR =",errSend);
+                            console.log("CRON - Sales - END ----------------------\n\n");
                         }
                         else{
                             if(_.has(respSend,'data.data') && _.isArray(respSend.data.data)){
                                 var respDocsIds = _.map(respSend.data.data,'numDoc');
-                                console.log("Facturas de Hoy en SERVER=",respDocsIds);
+                                console.log("   Facturas de Hoy en SERVER:(",respDocsIds.length,")=\n",respDocsIds);
                                 var functions = [];
                                 var missingIds = _.reject(docsIds,function(item){
                                     return _.find(respDocsIds, function(respId){
                                         return respId === item;
                                     });
                                 });
-                                console.log("Facturas de Hoy Faltantes en SERVER=",JSON.stringify(missingIds));
+                                console.log("   Facturas de Hoy Faltantes en SERVER:(",missingIds.length,")=\n",missingIds);
                                 if(missingIds.length>0){
                                     _.forEach(missingIds,function(idDoc)
                                     {
@@ -67,25 +67,34 @@ model.salesCron = function ()
                                         })
                                     });
                                     async.series(functions,function(err, docsToSend) {
-                                        if (err)console.log("SALES - CRON - ERROR - async.series.err=",err);
+                                        if (err){
+                                            console.log("SALES - CRON - ERROR - async.series.err=",err);
+                                            console.log("CRON - Sales - END ----------------------\n\n");
+                                        }
                                         else{
                                             // console.log("async.series.results=",JSON.stringify(_.map(docsToSend,'doc.FTI_DOCUMENTO')));
-                                            serverHelper.sendData(docsToSend,model.url+"/api/sales/docs",function (errSend,respSend) {
-                                                if (errSend)
-                                                {
-                                                    // log.save('CRON-SALES-TODAY','ERR',errSend.msg,function (errLog,respLog) {
-                                                    //     if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
-                                                    // });
-                                                    console.log("CRON - Sales: ERROR =",errSend)
-                                                }
-                                                else{
-                                                    console.log("CRON - Sales: SUCCESS = Data SEND, response:=",respSend);
-                                                }
-                                            })
+                                            var docsOnChunks = _.chunk(docsToSend, 2);
+                                            console.log("CRON - Sales - Send Data - Chunks of 2");
+                                            _.forEach(docsOnChunks,function(chunk){
+                                                serverHelper.sendData(chunk,model.url+"/api/sales/docs",function (errSend,respSend) {
+                                                    if (errSend)
+                                                    {
+                                                        // log.save('CRON-SALES-TODAY','ERR',errSend.msg,function (errLog,respLog) {
+                                                        //     if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
+                                                        // });
+                                                        console.log("CRON - Sales - Send Data - Chunk: ERROR =",errSend);
+                                                    }
+                                                    else{
+                                                        console.log("CRON - Sales - Send Data - Chunk: SUCCESS = Data SEND, response:=",respSend);
+                                                    }
+                                                })
+                                            });
+                                            console.log("CRON - Sales - END ----------------------\n\n");
                                         }
                                     });
                                 }else{
                                     console.log("CRON - Sales: SUCCESS = Data is SYNC");
+                                    console.log("CRON - Sales - END ----------------------\n\n");
                                 }
                             }
                         }
