@@ -1,7 +1,8 @@
 {
   "nameStore": "TiendaPrueba",
-  "idStore": "t001",
-  "a2Path": "C:/A2Avo/Empre001/Data/",
+  "idStore": "t002",
+  "a2Path": "E:/Proyectos/SISTEMA/A2JW/Empre001/Data/",
   "remoteServer":"https://shopinfopanel.herokuapp.com",
-  "phpPath":"D:/Web/UniServerZ/core/php56/php.exe"
+  "phpPath":"E:/Proyectos/SISTEMA/UniServerZ/core/php56/php.exe",
+  "version":2
 }
