@@ -13,9 +13,11 @@ var configFile = require('./../../config.json')
 var configKeys = [
   "nameStore",
   "idStore",
-  "a2Path",
   "remoteServer",
-  "phpPath"
+  "user",
+  "password",
+  "server",
+  "database"
 ];
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
@@ -44,18 +46,18 @@ model.checkConfig = function (callback) {
     return callback({
       key: "INVALID_VALUES_ON_CONFIG",
       msg: "Valores invalidados en elementos de configuracion en config.json"
-    })
-
-  a2DbHelper.checkPath(configFile.a2Path, function (err, response) {
-    if (err)
-      return callback(err);
-    return callback(null, configFile);
-    // serverHelper.sendData({test:"test"},model.getConfig().remoteServer+"/api/test",function (errSend,respSend) {
-    //     if (errSend)
-    //         return callback(errSend);
-    //     return callback(null,configFile);
-    // })
-  })
+    });
+  return callback(null, configFile);
+  // a2DbHelper.checkPath(configFile.a2Path, function (err, response) {
+  //   if (err)
+  //     return callback(err);
+  //   return callback(null, configFile);
+  //   // serverHelper.sendData({test:"test"},model.getConfig().remoteServer+"/api/test",function (errSend,respSend) {
+  //   //     if (errSend)
+  //   //         return callback(errSend);
+  //   //     return callback(null,configFile);
+  //   // })
+  // })
 };
 
 module.exports = model;
