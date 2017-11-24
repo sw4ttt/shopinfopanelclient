@@ -15,15 +15,18 @@ var sql = require('mssql');
 
 var model = {};
 
-var pathScript = normalize(__dirname + "/odbcWrapper.php");
-var paramScript = [configObject.a2Path];
-/*
-    IMPORTANTE:
-        -Los campos del select deben estar presente. No puede ser Select *.
- */
 model.get = function (query,callback)
 {
-
+    var configSql = _.pick(configFile,['user','password','server','database']);
+    sql.connect(configSql,function (err) {
+        if(err)return callback(err);
+        else{
+            var query = "SELECT TOP 10 NUMFACTURA,CODCLIENTE,FECHA,HORA,TOTALBRUTO,TIPODOC FROM ICGFRONT2015.dbo.FACTURASVENTA ORDER BY FECHA DESC";
+            new sql.Request().query(query,function (err, result) {
+                return callback(null,result);
+            })
+        }
+    })
 };
 
 module.exports = model;
