@@ -1,6 +1,6 @@
 {
-  "nameStore": "TiendaPrueba",
-  "idStore": "t001",
+  "nameStore": "Justice",
+  "idStore": "t006",
   "remoteServer":"https://shopinfopanel.herokuapp.com",
   "user": "sa",
   "password": "boner1991",
