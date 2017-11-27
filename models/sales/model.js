@@ -58,21 +58,42 @@ model.getDocsIdToday = function (callback) {
       var idsFiltered = _.filter(response, function (doc) {
         return !_.isNaN(parseInt(doc.NUMFACTURA))
       })
-      console.log('response=', JSON.stringify(response.recordset))
+      console.log('response=', JSON.stringify(response))
 
       // var test = _.transform(_.map(idsFiltered, 'NUMFACTURA'), function(result, id) {
       //   result.push(_.toString(id));
       //   return _.toString(id);
       // }, []);
       // console.log("test=",test)
-
-      console.log('idsFiltered=', _.map(idsFiltered, 'NUMFACTURA'))
       return callback(null, _.map(idsFiltered, 'NUMFACTURA'))
       // return callback(null, _.map(idsFiltered, 'NUMFACTURA'))
     }
   })
 }
 model.getDocById = function (id, callback) {
+
+  // var fields = [
+  //   'FTI_DOCUMENTO',
+  //   'FTI_TIPO',
+  //   'FTI_RIFCLIENTE',
+  //   'FTI_FECHAEMISION',
+  //   'FTI_DOCUMENTOORIGEN',
+  //   'FTI_TOTALITEMS',
+  //   'FTI_TOTALBRUTO',
+  //   'FTI_TOTALNETO',
+  //   'FTI_IMPUESTO1MONTO',
+  //   'FTI_HORA'
+  // ]
+  //
+  // var fieldsDetails = [
+  //   'FDI_CODIGO', // Codigo Articulo
+  //   'FDI_CANTIDAD',
+  //   'FDI_TIPOOPERACION', // Tipo de doc. 11 Fact, 12 Dev
+  //   'FDI_DOCUMENTO', // N.Factura
+  //   'FDI_DOCUMENTOORIGEN', // N.Factura Cuando es DEV. Vacio en caso contrario
+  //   'FDI_PRECIODEVENTA',
+  //   'FDI_FECHAOPERACION'
+  // ]
 
   // SELECT [FACTURASVENTA].[NUMFACTURA]
   //   ,[FACTURASVENTA].[CODCLIENTE]
@@ -86,13 +107,11 @@ model.getDocById = function (id, callback) {
   // WHERE [FACTURASVENTA].[NUMFACTURA] = id ORDER BY [NUMFACTURA] ASC OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY;
 
   var fields = [
-    'FACTURASVENTA.NUMFACTURA',
-    'FACTURASVENTA.CODCLIENTE',
-    'FACTURASVENTA.TOTALNETO',
-    'FACTURASVENTA.TIPODOC',
-    'FACTURASVENTA.FECHACREACION',
-    'CLIENTES.CODCLIENTE',
-    'CLIENTES.CIF'
+    "FACTURASVENTA.NUMFACTURA AS 'FTI_DOCUMENTO'",
+    "FACTURASVENTA.TOTALNETO AS 'FTI_TOTALNETO'",
+    "FACTURASVENTA.TIPODOC AS 'FTI_TIPO'",
+    "FACTURASVENTA.FECHACREACION AS 'FTI_FECHAEMISION'",
+    "CLIENTES.CIF 'FTI_RIFCLIENTE'"
   ]
 
   // "SELECT FACTURASVENTA.NUMFACTURA
@@ -123,23 +142,25 @@ model.getDocById = function (id, callback) {
 
       // REVISAR COMO VIENE LA DATA PARA ESTE GROUPBY.
 
-      _.forEach(_.groupBy(response, 'FTI_DOCUMENTO'), function (docVal) {
-        var docHeader = {}
-        _.forEach(docVal, function (docItem) {
-          docItem.FTI_FECHAEMISION = docItem.FTI_FECHAEMISION.substr(0, 10);
-          // docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/');
-          _.forEach(fields, function (field) {
-            docHeader[field] = docItem[field];
-            delete docItem[field];
-          })
-        })
-        var doc = {
-          doc: docHeader,
-          items: docVal
-        }
-        docsList.push(doc);
-      })
-      return callback(null, docsList)
+      console.log("response=",JSON.stringify(response));
+
+      // _.forEach(_.groupBy(response, 'FTI_DOCUMENTO'), function (docVal) {
+      //   var docHeader = {}
+      //   _.forEach(docVal, function (docItem) {
+      //     docItem.FTI_FECHAEMISION = docItem.FTI_FECHAEMISION.substr(0, 10);
+      //     // docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/');
+      //     _.forEach(fields, function (field) {
+      //       docHeader[field] = docItem[field];
+      //       delete docItem[field];
+      //     })
+      //   })
+      //   var doc = {
+      //     doc: docHeader,
+      //     items: docVal
+      //   }
+      //   docsList.push(doc);
+      // })
+      return callback(null, _.first(response));
     }
   })
 }

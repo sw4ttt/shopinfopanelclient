@@ -16,12 +16,17 @@ var sql = require('mssql')
 var model = {}
 
 model.get = function (query, callback) {
-  var configSql = _.pick(configFile, ['user', 'password', 'server', 'database'])
-  sql.connect(configSql, function (err) {
+  var configSql = _.pick(configFile, ['user', 'password', 'server', 'database']);
+
+  var pool = new sql.ConnectionPool(configSql,function (err) {
+    console.log("pool.connect.err=",err);
     if (err) return callback(err)
     else {
       // var query = "SELECT TOP 10 NUMFACTURA,CODCLIENTE,FECHA,HORA,TOTALBRUTO,TIPODOC FROM ICGFRONT2015.dbo.FACTURASVENTA ORDER BY FECHA DESC";
-      new sql.Request().query(query, function (err, result) {
+      pool.request().query(query, function (err, result) {
+        console.log("pool.err=",JSON.stringify(err));
+        console.log("pool.result=",JSON.stringify(result.recordset))
+        pool.close();
         return err ? callback(err) : callback(null, _.get(result, 'recordset', []))
       })
     }
