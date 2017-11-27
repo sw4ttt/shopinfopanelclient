@@ -111,7 +111,7 @@ model.getDocById = function (id, callback) {
     "FACTURASVENTA.TOTALNETO AS 'FTI_TOTALNETO'",
     "FACTURASVENTA.TIPODOC AS 'FTI_TIPO'",
     "FACTURASVENTA.FECHACREACION AS 'FTI_FECHAEMISION'",
-    "CLIENTES.CIF 'FTI_RIFCLIENTE'"
+    "CLIENTES.CIF AS 'FTI_RIFCLIENTE'"
   ]
 
   // "SELECT FACTURASVENTA.NUMFACTURA
@@ -142,7 +142,29 @@ model.getDocById = function (id, callback) {
 
       // REVISAR COMO VIENE LA DATA PARA ESTE GROUPBY.
 
+      if(_.isEmpty(response))
+        return callback(null,{});
+
       console.log("response=",JSON.stringify(response));
+      var docHeader = {};
+      var responseDoc = _.first(response);
+
+      var usedFields = [
+        "FTI_DOCUMENTO",
+        "FTI_TOTALNETO",
+        "FTI_TIPO",
+        "FTI_FECHAEMISION",
+        "FTI_RIFCLIENTE"
+      ]
+
+      _.forEach(usedFields, function (field) {
+        docHeader[field] = responseDoc[field];
+      })
+
+      var doc = {
+        doc: docHeader,
+        items: []
+      };
 
       // _.forEach(_.groupBy(response, 'FTI_DOCUMENTO'), function (docVal) {
       //   var docHeader = {}
@@ -160,7 +182,7 @@ model.getDocById = function (id, callback) {
       //   }
       //   docsList.push(doc);
       // })
-      return callback(null, _.first(response));
+      return callback(null, doc);
     }
   })
 }

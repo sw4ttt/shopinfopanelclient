@@ -127,7 +127,7 @@ config.checkConfig(function (err, configObject) {
         functions.push(function(callbackAsync) {
           sales.getDocById(idDoc,function(err,response){
             if(err) return callbackAsync(err);
-            return callbackAsync(null,_.first(response));
+            return callbackAsync(null,response);
           });
         })
       });
