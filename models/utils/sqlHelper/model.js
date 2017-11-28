@@ -24,7 +24,7 @@ model.get = function (query, callback) {
       // var query = "SELECT TOP 10 NUMFACTURA,CODCLIENTE,FECHA,HORA,TOTALBRUTO,TIPODOC FROM ICGFRONT2015.dbo.FACTURASVENTA ORDER BY FECHA DESC";
       pool.request().query(query, function (err, result) {
         console.log("pool.err=",JSON.stringify(err));
-        console.log("pool.result=",JSON.stringify(result.recordset));
+        // console.log("pool.result=",JSON.stringify(result.recordset));
         pool.close();
         return err ? callback(err) : callback(null, _.get(result, 'recordset', []));
       })

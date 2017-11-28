@@ -89,16 +89,13 @@
                     <th>Cliente</th>
                     <th>N. Art.</th>
                     <th>Fecha</th>
+                    <th>Hora</th>
                     <th>Total</th>
                 </tr>
                 </thead>
                 <tbody id="facturasList">
                 <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
+
                 </tr>
                 </tbody>
             </table>
@@ -113,17 +110,13 @@
                     <th>Cliente</th>
                     <th>N. Art.</th>
                     <th>Fecha</th>
+                    <th>Hora</th>
                     <th>Total</th>
                 </tr>
                 </thead>
                 <tbody id="devolucionesList">
                 <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
+
                 </tr>
                 </tbody>
             </table>
@@ -256,24 +249,30 @@
 
     $.LoadingOverlay('show')
     $.get('/api/sales/docs/date/' + $('#selectorfecha').val(), function (response) {
-      $.LoadingOverlay('hide')
+      $.LoadingOverlay('hide');
+      console.log("response=",JSON.stringify(response));
       //                var _ = require('lodash');
       //                $( "#panel-body" ).append( "<div class='errorQuery alert alert-success'><strong>success!</strong>success.</div>" );
       if (response.data.length === 0) {
         $('#panel-body').append('<div class=\'errorQuery alert alert-info\'><strong></strong>No existen Facturas para la fecha indicada.</div>')
       }
-      else
+      else{
+        $('.facturaItem').remove();
+        $('.devolucionItem').remove();
         _.forEach(response.data, function (value) {
-          if (value.doc.FTI_TIPO === '11') {
+          if (value.doc.FTI_TIPO.toString() === '13') {
             //FTI_DOCUMENTOORIGEN
-            $('#facturasList').append('<tr class=\'facturaItem\'><td>' + value.doc.FTI_DOCUMENTO + '</td><td>' + value.doc.FTI_PERSONACONTACTO + '</td><td>' + value.doc.FTI_TOTALITEMS + '</td><td>' + value.doc.FTI_FECHAEMISION + '</td><td>Bs.' + value.doc.FTI_TOTALNETO + '</td></tr>')
+            $('#facturasList').append('<tr class=\'facturaItem\'><td>' + value.doc.FTI_DOCUMENTO + '</td><td>' + (value.doc.FTI_RIFCLIENTE?value.doc.FTI_RIFCLIENTE:"-") + '</td><td>' + "N/A" + '</td><td>' + value.doc.FTI_FECHAEMISION + '</td><td>' + value.doc.FTI_HORA + '</td><td>Bs.' + value.doc.FTI_TOTALNETO + '</td></tr>')
             //                        $( "#facturasList" ).append( "<li style='text-align: center' class='facturaItem list-group-item'><button class='btn btn-primary btn-sm editable'><span class='glyphicon glyphicon-eye-open'></span></button> " +
             //                            "N°"+value.doc.FTI_DOCUMENTO+"</li>" );
           }
-          else if (value.doc.FTI_TIPO === '12') {
-            $('#devolucionesList').append('<tr class=\'devolucionItem\'><td>' + value.doc.FTI_DOCUMENTO + '</td><td>' + value.doc.FTI_DOCUMENTOORIGEN + '</td><td>' + value.doc.FTI_PERSONACONTACTO + '</td><td>' + value.doc.FTI_TOTALITEMS + '</td><td>' + value.doc.FTI_FECHAEMISION + '</td><td>Bs.' + value.doc.FTI_TOTALNETO + '</td></tr>')
+          else
+            if(value.doc.FTI_TIPO.toString() === '17'){
+            $('#devolucionesList').append('<tr class=\'devolucionItem\'><td>' + value.doc.FTI_DOCUMENTO + '</td><td>' + "N/A" + '</td><td>' + (value.doc.FTI_RIFCLIENTE?value.doc.FTI_RIFCLIENTE:"-") + '</td><td>' + "N/A" + '</td><td>' + value.doc.FTI_FECHAEMISION + '</td><td>' + value.doc.FTI_HORA + '</td><td>Bs.' + value.doc.FTI_TOTALNETO + '</td></tr>')
           }
         })
+      }
+
     })
       .done(function () {
         //                    $.LoadingOverlay("hide");

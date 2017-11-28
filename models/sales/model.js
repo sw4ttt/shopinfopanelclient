@@ -145,7 +145,7 @@ model.getDocById = function (id, callback) {
       if(_.isEmpty(response))
         return callback(null,{});
 
-      console.log("response=",JSON.stringify(response));
+      // console.log("response=",JSON.stringify(response));
       var docHeader = {};
       var responseDoc = _.first(response);
 
@@ -187,45 +187,72 @@ model.getDocById = function (id, callback) {
   })
 }
 model.getDocsToday = function (callback) {
-  var date = moment.utc().subtract(4, 'hours').format('YYYY-MM-DD')
+  // var date = moment.utc().subtract(4, 'hours').format('YYYY-MM-DD');
+  var date = '2017-11-15';
   // console.log("date=",date);
   // var date = "2017-10-28";
-  var queryFields = _.union(fields, fieldsDetails)
-  var test =
-    squel.select()
-      .fields(queryFields)
-      .from('SOperacionInv')
-      .join('SDetalleVenta', null, 'SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO')
-      .where('FTI_FECHAEMISION = ?', date)
-      .where('FDI_FECHAOPERACION = ?', date)
-      .order('FTI_DOCUMENTO')
-      .toString()
+  var fields = [
+    "FACTURASVENTA.NUMFACTURA AS 'FTI_DOCUMENTO'",
+    "FACTURASVENTA.TOTALNETO AS 'FTI_TOTALNETO'",
+    "FACTURASVENTA.TIPODOC AS 'FTI_TIPO'",
+    "FACTURASVENTA.FECHACREACION AS 'FTI_FECHAEMISION'",
+    "CLIENTES.CIF AS 'FTI_RIFCLIENTE'"
+  ];
 
-  a2DbHelper.get(test, function (err, response) {
+
+  // var test =
+  //   squel.select()
+  //     .fields(queryFields)
+  //     .from('SOperacionInv')
+  //     .join('SDetalleVenta', null, 'SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO')
+  //     .where('FTI_FECHAEMISION = ?', date)
+  //     .where('FDI_FECHAOPERACION = ?', date)
+  //     .order('FTI_DOCUMENTO')
+  //     .toString();
+
+  var query =
+    squel.select()
+      .fields(fields)
+      .from('FACTURASVENTA')
+      .join('CLIENTES', null, 'FACTURASVENTA.CODCLIENTE = CLIENTES.CODCLIENTE')
+      .where('FACTURASVENTA.FECHA = ?', date)
+      .toString();
+
+  sqlHelper.get(query, function (err, response) {
     if (err)
       return callback(err)
     else {
       var docsList = []
-      console.log('DOCS=', JSON.stringify(response))
-      _.forEach(_.groupBy(response, 'FTI_DOCUMENTO'), function (docVal) {
-        var docHeader = {}
-        _.forEach(docVal, function (docItem) {
-          docItem.FTI_FECHAEMISION = date
-          docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/')
-          _.forEach(fields, function (field) {
-            docHeader[field] = docItem[field]
-            delete docItem[field]
-          })
+      _.forEach(response, function (responseDoc) {
+        var docHeader = {};
 
-        })
+        var usedFields = [
+          "FTI_DOCUMENTO",
+          "FTI_TOTALNETO",
+          "FTI_TIPO",
+          "FTI_FECHAEMISION",
+          "FTI_RIFCLIENTE"
+        ]
+
+        _.forEach(usedFields, function (field) {
+          docHeader[field] = responseDoc[field];
+        });
+
+
+        console.log("docHeader.FTI_FECHAEMISION=",docHeader.FTI_FECHAEMISION);
+        docHeader.FTI_HORA = moment.utc(docHeader.FTI_FECHAEMISION).format('HH:mm');
+        console.log("docHeader.FTI_HORA=",docHeader.FTI_HORA);
+        docHeader.FTI_FECHAEMISION = moment.utc(docHeader.FTI_FECHAEMISION).format('YYYY-MM-DD');
+        console.log("docHeader.FTI_FECHAEMISION_FINAL=",docHeader.FTI_FECHAEMISION,"\n");
+
         var doc = {
           doc: docHeader,
-          items: docVal
-        }
+          items: []
+        };
         docsList.push(doc)
       })
-      console.log('DOCs=', _.isArray(docsList) ? docsList.length : [])
-      return callback(null, [])
+
+      return callback(null, docsList);
       // return callback(null, docsList);
     }
   })
@@ -234,40 +261,71 @@ model.getDocsDate = function (date, callback) {
   if (!moment(date).isValid())
     return callback({key: 'INVALID_DATE', msg: 'The param date is invalid'})
 
-  var queryFields = _.union(fields, fieldsDetails)
-  var test =
-    squel.select()
-      .fields(queryFields)
-      .from('SOperacionInv')
-      .join('SDetalleVenta', null, 'SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO')
-      .where('FTI_FECHAEMISION = ?', moment(date).format('YYYY-MM-DD'))
-      .where('FDI_FECHAOPERACION = ?', moment(date).format('YYYY-MM-DD'))
-      .toString()
+  var fields = [
+    "FACTURASVENTA.NUMFACTURA AS 'FTI_DOCUMENTO'",
+    "FACTURASVENTA.TOTALNETO AS 'FTI_TOTALNETO'",
+    "FACTURASVENTA.TIPODOC AS 'FTI_TIPO'",
+    "FACTURASVENTA.FECHACREACION AS 'FTI_FECHAEMISION'",
+    "CLIENTES.CIF AS 'FTI_RIFCLIENTE'"
+  ];
 
-  a2DbHelper.get(test, function (err, response) {
+
+  // var test =
+  //   squel.select()
+  //     .fields(queryFields)
+  //     .from('SOperacionInv')
+  //     .join('SDetalleVenta', null, 'SOperacionInv.FTI_DOCUMENTO = SDetalleVenta.FDI_DOCUMENTO')
+  //     .where('FTI_FECHAEMISION = ?', date)
+  //     .where('FDI_FECHAOPERACION = ?', date)
+  //     .order('FTI_DOCUMENTO')
+  //     .toString();
+
+  var query =
+    squel.select()
+      .fields(fields)
+      .from('FACTURASVENTA')
+      .join('CLIENTES', null, 'FACTURASVENTA.CODCLIENTE = CLIENTES.CODCLIENTE')
+      .where('FACTURASVENTA.FECHA = ?', date)
+      .toString();
+
+  sqlHelper.get(query, function (err, response) {
     if (err)
       return callback(err)
     else {
       var docsList = []
-      _.forEach(_.groupBy(response, 'FTI_DOCUMENTO'), function (docVal) {
-        var docHeader = {}
-        _.forEach(docVal, function (docItem) {
-          docItem.FTI_FECHAEMISION = moment(docItem.FTI_FECHAEMISION).format('YYYY-MM-DD')
-          docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/')
+      _.forEach(response, function (responseDoc) {
+        var docHeader = {};
 
-          _.forEach(fields, function (field) {
-            docHeader[field] = docItem[field]
-            delete docItem[field]
-          })
+        var usedFields = [
+          "FTI_DOCUMENTO",
+          "FTI_TOTALNETO",
+          "FTI_TIPO",
+          "FTI_FECHAEMISION",
+          "FTI_RIFCLIENTE"
+        ]
 
-        })
+        _.forEach(usedFields, function (field) {
+          docHeader[field] = responseDoc[field];
+        });
+
+
+        // console.log("docHeader.FTI_FECHAEMISION=",docHeader.FTI_FECHAEMISION);
+        docHeader.FTI_HORA = moment.utc(docHeader.FTI_FECHAEMISION).format('HH:mm');
+        // console.log("docHeader.FTI_HORA=",docHeader.FTI_HORA);
+        docHeader.FTI_FECHAEMISION = moment.utc(docHeader.FTI_FECHAEMISION).format('YYYY-MM-DD');
+        // console.log("docHeader.FTI_FECHAEMISION_FINAL=",docHeader.FTI_FECHAEMISION,"\n");
+
         var doc = {
           doc: docHeader,
-          items: docVal
-        }
+          items: []
+        };
         docsList.push(doc)
-      })
-      return callback(null, docsList)
+      });
+
+      console.log("FECHA=",date," docsList=",JSON.stringify(docsList));
+
+      return callback(null, docsList);
+      // return callback(null, docsList);
     }
   })
 }
