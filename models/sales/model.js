@@ -63,7 +63,8 @@ model.getDocsToday = function (callback) {
         var docHeader = {}
         _.forEach(docVal, function (docItem) {
           docItem.FTI_FECHAEMISION = date
-          docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/')
+          if(docItem.FTI_DOCUMENTOORIGEN)
+            docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/')
           _.forEach(fields, function (field) {
             docHeader[field] = docItem[field]
             delete docItem[field]
@@ -160,7 +161,8 @@ model.getDocsRange = function (params, callback) {
     else {
       _.forEach(response, function (doc) {
         doc.FTI_FECHAEMISION = moment(doc.FTI_FECHAEMISION).format('YYYY-MM-DD')
-        doc.FTI_DOCUMENTOORIGEN = _.trimEnd(doc.FTI_DOCUMENTOORIGEN, '/')
+        if(doc.FTI_DOCUMENTOORIGEN)
+          doc.FTI_DOCUMENTOORIGEN = _.trimEnd(doc.FTI_DOCUMENTOORIGEN, '/')
       })
       return callback(null, response)
     }
@@ -186,8 +188,9 @@ model.getDocById = function (id, callback) {
       _.forEach(_.groupBy(response, 'FTI_DOCUMENTO'), function (docVal) {
         var docHeader = {}
         _.forEach(docVal, function (docItem) {
-          docItem.FTI_FECHAEMISION = docItem.FTI_FECHAEMISION.substr(0, 10)
-          docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/')
+          docItem.FTI_FECHAEMISION = docItem.FTI_FECHAEMISION.substr(0, 10);
+          if(docItem.FTI_DOCUMENTOORIGEN)
+            docItem.FTI_DOCUMENTOORIGEN = _.trimEnd(docItem.FTI_DOCUMENTOORIGEN, '/')
           _.forEach(fields, function (field) {
             docHeader[field] = docItem[field]
             delete docItem[field]

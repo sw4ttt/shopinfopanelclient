@@ -55,7 +55,7 @@ model.checkPath = function (path,callback)
 {
     if (!path)
         return callback({status:400,key:"PARAM_PATH_MISSING"});
-    fs.open(path+"SOperacionInv.dat", 'a+', function(err, fd){
+    fs.open(path+"SOperacionInv.dat", 'r', function(err, fd){
         if (err)
             return callback(err)
         return callback(null,{success:true});
