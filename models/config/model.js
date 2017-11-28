@@ -17,7 +17,8 @@ var configKeys = [
   "user",
   "password",
   "server",
-  "database"
+  "database",
+  "version"
 ];
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
