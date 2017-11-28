@@ -66,18 +66,25 @@ model.salesCron = function () {
                         return !_.isEmpty(doc);
                       });
 
-                      if(filteredDocs.length>0)
-                        serverHelper.sendData(docsToSend, model.url + '/api/sales/docs', function (errSend, respSend) {
-                          if (errSend) {
-                            // log.save('CRON-SALES-TODAY','ERR',errSend.msg,function (errLog,respLog) {
-                            //     if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
-                            // });
-                            console.log('CRON - Sales: ERROR =', errSend)
-                          }
-                          else {
-                            console.log('CRON - Sales: SUCCESS = Data SEND, response:=', respSend)
-                          }
-                        })
+                      if(filteredDocs.length>0){
+                        var docsOnChunks = _.chunk(filteredDocs, 2);
+                        console.log("CRON - Sales - Send Data - Chunks of 2");
+                        _.forEach(docsOnChunks,function(chunk){
+                          serverHelper.sendData(chunk,model.url+"/api/sales/docs",function (errSend,respSend) {
+                            if (errSend)
+                            {
+                              // log.save('CRON-SALES-TODAY','ERR',errSend.msg,function (errLog,respLog) {
+                              //     if (errLog)console.log("LOG-ERR-Cron-SenData=",errLog)
+                              // });
+                              console.log("CRON - Sales - Send Data - Chunk: ERROR =",errSend);
+                            }
+                            else{
+                              console.log("CRON - Sales - Send Data - Chunk: SUCCESS = Data SEND, response:=",respSend);
+                            }
+                          })
+                        });
+                        console.log("CRON - Sales - END ----------------------\n\n");
+                      }
                       else{
                         console.log('CRON - Sales: ERROR = DATA FILTRADA RARA.');
                       }

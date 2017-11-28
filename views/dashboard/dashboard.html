@@ -260,14 +260,14 @@
         $('.facturaItem').remove();
         $('.devolucionItem').remove();
         _.forEach(response.data, function (value) {
-          if (value.doc.FTI_TIPO.toString() === '13') {
+          if (value.doc.FTI_TIPO.toString() === '11' || value.doc.FTI_TIPO.toString() === '13') {
             //FTI_DOCUMENTOORIGEN
             $('#facturasList').append('<tr class=\'facturaItem\'><td>' + value.doc.FTI_DOCUMENTO + '</td><td>' + (value.doc.FTI_RIFCLIENTE?value.doc.FTI_RIFCLIENTE:"-") + '</td><td>' + "N/A" + '</td><td>' + value.doc.FTI_FECHAEMISION + '</td><td>' + value.doc.FTI_HORA + '</td><td>Bs.' + value.doc.FTI_TOTALNETO + '</td></tr>')
             //                        $( "#facturasList" ).append( "<li style='text-align: center' class='facturaItem list-group-item'><button class='btn btn-primary btn-sm editable'><span class='glyphicon glyphicon-eye-open'></span></button> " +
             //                            "N°"+value.doc.FTI_DOCUMENTO+"</li>" );
           }
           else
-            if(value.doc.FTI_TIPO.toString() === '17'){
+            if(value.doc.FTI_TIPO.toString() === '12' || value.doc.FTI_TIPO.toString() === '17'){
             $('#devolucionesList').append('<tr class=\'devolucionItem\'><td>' + value.doc.FTI_DOCUMENTO + '</td><td>' + "N/A" + '</td><td>' + (value.doc.FTI_RIFCLIENTE?value.doc.FTI_RIFCLIENTE:"-") + '</td><td>' + "N/A" + '</td><td>' + value.doc.FTI_FECHAEMISION + '</td><td>' + value.doc.FTI_HORA + '</td><td>Bs.' + value.doc.FTI_TOTALNETO + '</td></tr>')
           }
         })
