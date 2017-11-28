@@ -15,7 +15,8 @@ var configKeys = [
   "idStore",
   "a2Path",
   "remoteServer",
-  "phpPath"
+  "phpPath",
+  "version"
 ];
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
