@@ -16,7 +16,8 @@ model.sendData = function (docs,url,callback)
     var data = {
         docs: docs,
         idStore: configObject.idStore,
-        nameStore: configObject.nameStore
+        nameStore: configObject.nameStore,
+        version:configObject.version
     };
     request(
         {
