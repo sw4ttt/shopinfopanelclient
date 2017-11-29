@@ -156,7 +156,10 @@ model.getDocById = function (id, callback) {
 
       _.forEach(usedFields, function (field) {
         docHeader[field] = responseDoc[field];
-      })
+      });
+
+      docHeader.FTI_HORA = moment.utc(docHeader.FTI_FECHAEMISION).format('HH:mm');
+      docHeader.FTI_FECHAEMISION = moment.utc(docHeader.FTI_FECHAEMISION).format('YYYY-MM-DD');
 
       docHeader.FTI_TIPO = responseDoc.FTI_TIPO.toString()==='13'?'11':'12';
 
