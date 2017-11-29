@@ -62,9 +62,12 @@ model.salesCron = function () {
                     if (err) console.log('SALES - CRON - ERROR - async.series.err=', err)
                     else {
                       // console.log("async.series.results=",JSON.stringify(_.map(docsToSend,'doc.FTI_DOCUMENTO')));
+                      console.log("docsToSend=",JSON.stringify(docsToSend));
                       var filteredDocs = _.filter(docsToSend,function(doc){
                         return !_.isEmpty(doc);
                       });
+
+                      console.log("filteredDocs=",JSON.stringify(filteredDocs));
 
                       if(filteredDocs.length>0){
                         var docsOnChunks = _.chunk(filteredDocs, 2);
