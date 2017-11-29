@@ -52,9 +52,9 @@ model.salesCron = function () {
                 if (missingIds.length > 0) {
                   _.forEach(missingIds, function (idDoc) {
                     functions.push(function (callbackAsync) {
-                      sales.getDocById(idDoc, function (err, response) {
+                      sales.getDocById(idDoc, function (err, doc) {
                         if (err) return callbackAsync(err)
-                        return callbackAsync(null, _.first(response))
+                        return callbackAsync(null, doc)
                       })
                     })
                   })
