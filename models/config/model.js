@@ -5,7 +5,7 @@
 var express = require('express');
 var _ = require('lodash');
 var S = require('string');
-var shortid = require('shortid');
+// var shortid = require('shortid');
 var a2DbHelper = require('./../utils/a2DbHelper/model')
 var serverHelper = require('./../utils/serverHelper/model')
 var configFile = require('./../../config.json')
@@ -20,7 +20,7 @@ var configKeys = [
   "database"
 ];
 
-shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
+// shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
 var model = {};
 
