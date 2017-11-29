@@ -39,9 +39,9 @@ var fieldsDetails = [
  */
 
 model.getDocsIdToday = function (callback) {
-  // var date = moment.utc().subtract(4, 'hours').format("YYYY-MM-DD");
+  var date = moment.utc().subtract(4, 'hours').format("YYYY-MM-DD");
   // console.log("date=",date);
-  var date = '2017-11-15'
+  // var date = '2017-11-15'
 
   var query = 'SELECT NUMFACTURA,TIPODOC FROM FACTURASVENTA WHERE FECHA = \'' + date + '\''
 
@@ -138,9 +138,6 @@ model.getDocById = function (id, callback) {
     if (err)
       return callback(err)
     else {
-      var docsList = [];
-
-      // REVISAR COMO VIENE LA DATA PARA ESTE GROUPBY.
 
       if(_.isEmpty(response))
         return callback(null,{});
@@ -160,6 +157,8 @@ model.getDocById = function (id, callback) {
       _.forEach(usedFields, function (field) {
         docHeader[field] = responseDoc[field];
       })
+
+      docHeader.FTI_TIPO = responseDoc.FTI_TIPO.toString()==='13'?'11':'12';
 
       var doc = {
         doc: docHeader,
@@ -244,6 +243,8 @@ model.getDocsToday = function (callback) {
         console.log("docHeader.FTI_HORA=",docHeader.FTI_HORA);
         docHeader.FTI_FECHAEMISION = moment.utc(docHeader.FTI_FECHAEMISION).format('YYYY-MM-DD');
         console.log("docHeader.FTI_FECHAEMISION_FINAL=",docHeader.FTI_FECHAEMISION,"\n");
+
+        docHeader.FTI_TIPO = responseDoc.FTI_TIPO.toString()==='13'?'11':'12';
 
         var doc = {
           doc: docHeader,

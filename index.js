@@ -110,45 +110,14 @@ config.checkConfig(function (err, configObject) {
         'idStore': configObject.idStore,
         'nameStore': configObject.nameStore
       }, function (data) {
-        console.log('SOCKET-RESPONSE=', data)
+        console.log('SOCKET-RESPONSE=', data);
       })
       ioClient.on('disconnect', function () {
         console.log('SOCKET-SERVER: disconnect')
       })
     })
-
-    var sales = require('./models/sales/model');
-
-    sales.getDocsToday(function (err,response) {
-        console.log('getDocsToday.err=', JSON.stringify(err))
-        console.log('getDocsToday.response=', JSON.stringify(response))
-    })
-
-    // sales.getDocsIdToday(function (err, response) {
-    //   console.log('getDocsIdToday.err=', JSON.stringify(err))
-    //   console.log('getDocsIdToday.response=', JSON.stringify(response))
-    //   var functions = [];
-    //   _.forEach(response,function(idDoc){
-    //     functions.push(function(callbackAsync) {
-    //       sales.getDocById(idDoc,function(err,response){
-    //         if(err) return callbackAsync(err);
-    //         return callbackAsync(null,response);
-    //       });
-    //     })
-    //   });
-    //   var async = require('async');
-    //   async.series(functions,function(err, docsToSend) {
-    //     if (err)console.log("SALES - CRON - ERROR - async.series.err=",err);
-    //     else{
-    //
-    //       console.log("docsToSend=",JSON.stringify(docsToSend));
-    //
-    //     }
-    //   });
-    // })
-    // cron.init(configObject.remoteServer);
-    // cron.salesCron();
-    // cron.clearLogs();
-
+    cron.init(configObject.remoteServer);
+    cron.salesCron();
+    cron.clearLogs();
   }
 })

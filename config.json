@@ -5,5 +5,6 @@
   "user": "sa",
   "password": "boner1991",
   "server": "localhost",
-  "database": "ICGFRONT2015"
+  "database": "ICGFRONT2015",
+  "version":"f1"
 }
